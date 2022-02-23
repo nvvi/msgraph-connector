@@ -5,7 +5,7 @@
   <groupId>com.axonivy.connector.office365</groupId>
   <artifactId>msgraph-connector-test</artifactId>
   <version>9.4.0-SNAPSHOT</version>
-  <packaging>iar-integration-test</packaging>
+  <packaging>iar</packaging>
   <dependencies>
     <dependency>
       <groupId>com.axonivy.connector.office365</groupId>
@@ -14,26 +14,31 @@
       <type>iar</type>
     </dependency>
     <dependency>
-      <groupId>com.axonivy.connector.office365</groupId>
-      <artifactId>msgraph-connector-demo</artifactId>
-      <version>${project.version}</version>
-      <type>iar</type>
+      <groupId>com.axonivy.ivy.test</groupId>
+      <artifactId>unit-tester</artifactId>
+      <version>9.3.0</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
-    	<groupId>com.axonivy.ivy.test</groupId>
-    	<artifactId>unit-tester</artifactId>
-    	<version>9.3.0</version>
-    	<scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.axonivy.ivy.webtest</groupId>
-    	<artifactId>web-tester</artifactId>
-    	<version>9.3.0</version>
-    	<scope>test</scope>
+      <groupId>com.axonivy.ivy.webtest</groupId>
+      <artifactId>web-tester</artifactId>
+      <version>9.3.0</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
     <testSourceDirectory>src_test</testSourceDirectory>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0-M1</version>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
@@ -42,16 +47,5 @@
         <extensions>true</extensions>
       </plugin>
     </plugins>
-    <pluginManagement>
-    <plugins>
-      <plugin>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>3.0.0-M1</version>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-    </plugins>
-  </pluginManagement>
   </build>
 </project>

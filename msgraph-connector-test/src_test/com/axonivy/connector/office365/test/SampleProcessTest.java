@@ -13,20 +13,8 @@ import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.scripting.objects.CompositeObject;
 import ch.ivyteam.ivy.workflow.CaseState;
 
-/**
- * This sample ProcessTest simulates users and systems working through
- * your process flow. Created data and tasks can be easily asserted.
- * 
- * <p>The test can either be run<ul>
- * <li>in the Designer IDE ( <code>right click > run as > JUnit Test </code> )</li>
- * <li>or in a Maven continuous integration build pipeline ( <code>mvn clean verify</code> )</li>
- * </ul></p>
- * 
- * <p>Detailed guidance on writing these kind of tests can be found in our
- * <a href="https://developer.axonivy.com/doc/sprint/concepts/testing/process-testing.html">Process Testing docs</a>
- * </p>
- */
 @IvyProcessTest
+@Disabled
 public class SampleProcessTest{
   
   private static final BpmProcess testee = BpmProcess.path("MyProcess");
