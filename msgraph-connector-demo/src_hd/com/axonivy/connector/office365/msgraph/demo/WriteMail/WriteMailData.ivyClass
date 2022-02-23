@@ -1,0 +1,6 @@
+WriteMailData #class
+com.axonivy.connector.office365.msgraph.demo.WriteMail #namespace
+mail msgraph.connector.NewMail #field
+mail PERSISTENT #fieldModifier
+receiver String #field
+receiver PERSISTENT #fieldModifier

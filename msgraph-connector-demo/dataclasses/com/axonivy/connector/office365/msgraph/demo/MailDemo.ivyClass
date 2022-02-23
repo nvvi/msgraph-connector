@@ -1,0 +1,4 @@
+MailDemo #class
+com.axonivy.connector.office365.msgraph.demo #namespace
+mails java.util.List<com.microsoft.graph.MicrosoftGraphMessage> #field
+mail msgraph.connector.NewMail #field

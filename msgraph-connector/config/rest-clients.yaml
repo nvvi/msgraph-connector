@@ -1,1 +1,20 @@
 RestClients:
+  #This OData service is located at https://graph.microsoft.com/v1.0
+  Microsoft 365 (Partial Graph API):
+    UUID: 007036dc-72d1-429f-88a7-ba5d5cf5ae58
+    Url: https://graph.microsoft.com/v1.0/
+    Icon: res:/webContent/icons/microsoft.png
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - com.microsoft.auth.OAuth2Feature
+    Properties:
+      AUTH.scope: user.read Calendars.ReadWrite mail.readWrite mail.send Tasks.ReadWrite
+        offline_access
+      AUTH.baseUri: https://login.microsoftonline.com/common/oauth2/v2.0
+      jersey.client.connectorProvider: org.glassfish.jersey.client.HttpUrlConnectorProvider
+      JSON.Serialization.PROPERTY_INCLUSION: NON_NULL
+      AUTH.appId: 7b0e5eec-3453-46f6-9364-ad0bc20af9e9
+      AUTH.secretKey: ${decrypt:\u0002\u00B8\u0006\u00C0\u002D\u00BC\u0077\u0051\u00FF\u00F8\u0024\u0088\u0082\u0012\u008D\u0036\u009A\u008D\u00FD\u0073\u0007\u003C\u00AC\u00EB\u0013\u00BE\u00D5\u0098\u0080\u00D2\u0030\u0094\u0045\u002F\u00F8\u00CB\u00CA\u00FA\u00B9\u00EC\u005D\u0006\u0075\u00BD\u0084\u00E7\u001F\u00AC\u005D\u0046\u0031\u0061\u0009\u00BF\u00C6\u006F\u00CA\u0050\u005D\u000E\u00E1\u008D\u00BC\u004B\u00BC\u00C2\u00D3\u0094\u0007\u000B\u003F\u00B7\u0012\u00FB\u004A\u0001\u00E6\u00D0\u0089\u005F\u0063\u00D7\u00DD\u002A\u009F\u00B4\u00E6\u0055\u0066\u0094\u0096\u0015\u0067\u0008\u0045\u00F4\u0053\u00F5\u00F1\u000E\u003E\u00E5\u0095\u009B\u0042\u001B\u004E\u0075\u0004\u008C\u00E5\u0015\u008E\u0043\u0039\u0009\u00A5\u00A7\u0098\u003B\u0075\u00C8\u0029\u0013\u003C\u0054\u008C\u00ED\u001A\u0038\u0048\u0067\u0093\u00A3\u006A\u0095\u0053\u00BD\u005E\u00ED\u00FC\u0035\u0038\u00E3\u0086\u00A6\u00D1\u0041\u007B\u0052\u0058\u0031\u0053\u006A\u00A9\u0002\u0048\u00EE\u0099\u0032\u006C\u00FF\u0052\u00D9\u0038\u0050\u0017\u00C9\u00D5\u001D\u00FA\u003D\u009B\u00EA\u0060\u00AD\u00F5\u00BD\u00B3\u0018\u0044\u0005\u005F\u0032\u009D\u0048\u0083\u00B8\u0078\u0071\u00A5\u0095\u0085\u0085\u00EF\u000D\u00BA\u00FF\u0084\u00F3\u00E4\u0048\u004D\u0076\u0021\u00DD\u00E5\u0016}
+    OpenAPI:
+      SpecUrl: https://graphexplorerapi.azurewebsites.net/openapi?tags=me.user,me.calendar,users.calendar,me.message,me.Actions,me.todo&openApiVersion=3&graphVersion=v1.0&format=json&style=PowerShell
+      Namespace: com.microsoft.graph
