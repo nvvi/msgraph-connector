@@ -24,6 +24,7 @@ import com.axonivy.ivy.webtest.engine.EngineUrl;
  * </p>
  */
 @IvyWebTest(headless = false)
+@Disabled
 public class SampleWebIT{
 
   @Test
