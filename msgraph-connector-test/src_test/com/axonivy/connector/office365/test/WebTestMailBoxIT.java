@@ -13,7 +13,7 @@ import com.axonivy.ivy.webtest.primeui.PrimeUi;
 import com.axonivy.ivy.webtest.primeui.widget.Table;
 
 @IvyWebTest()
-public class TestMailBoxIT{
+public class WebTestMailBoxIT{
 
   @Test
   public void checkMailContent() {
