@@ -16,7 +16,7 @@ import ch.ivyteam.ivy.environment.IvyTest;
 
 @IvyTest
 public class RestIvyTest{
-	
+
   @BeforeEach
   void beforeEach(AppFixture fixture) {
     //Disable OAuth feature for mock rest service
@@ -27,8 +27,8 @@ public class RestIvyTest{
 
   @Test
   public void restApi() {
-	  var response = Ivy.rest().client(UUID.fromString("007036dc-72d1-429f-88a7-ba5d5cf5ae58"))
-			  .path("/me").request().get().readEntity(MicrosoftGraphUser.class);
-	  assertThat(response.getMail()).isEqualTo("reguel.wermelinger@mailinator.com");
+    var response = Ivy.rest().client(UUID.fromString("007036dc-72d1-429f-88a7-ba5d5cf5ae58"))
+            .path("/me").request().get().readEntity(MicrosoftGraphUser.class);
+    assertThat(response.getMail()).isEqualTo("reguel.wermelinger@mailinator.com");
   }
 }
