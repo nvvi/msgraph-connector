@@ -6,6 +6,7 @@
   <artifactId>msgraph-connector-demo</artifactId>
   <version>9.4.0-SNAPSHOT</version>
   <packaging>iar</packaging>
+
   <dependencies>
     <dependency>
       <groupId>com.axonivy.connector.office365</groupId>
@@ -14,6 +15,7 @@
       <type>iar</type>
     </dependency>
   </dependencies>
+
   <pluginRepositories>
     <pluginRepository>
       <id>sonatype</id>
@@ -23,13 +25,48 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+
   <build>
     <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <appendAssemblyId>false</appendAssemblyId>
+              <descriptors>
+                <descriptor>../maven/deploy/zip.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
         <version>9.4.0-SNAPSHOT</version>
         <extensions>true</extensions>
+        <executions>
+          <execution>
+            <id>test.app.deploy</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>deploy-to-engine</goal>
+            </goals>
+            <configuration>
+              <deployMethod>HTTP</deployMethod>
+              <deployServerId>axonivy.engine</deployServerId>
+              <deployEngineUrl>http://localhost:8080</deployEngineUrl>
+              <deployFile>${project.build.directory}/${project.artifactId}-${project.version}.zip</deployFile>
+              <deployToEngineApplication>${project.artifactId}</deployToEngineApplication>
+              <deployTestUsers>true</deployTestUsers>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
