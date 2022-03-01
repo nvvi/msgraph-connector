@@ -2,9 +2,9 @@ Variables:
 
   microsoft-connector:
 
-    # use your Azure Application (clien) ID here
+    # Your Azure Application (client) ID
     appId: ""
 
-    # secret key from your applications certificates & secrets
+    # Secret key from your applications "certificates & secrets"
     # [password]
     secretKey: ""
