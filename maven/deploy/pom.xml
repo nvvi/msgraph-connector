@@ -66,7 +66,7 @@
             <configuration>
               <deployMethod>HTTP</deployMethod>
               <deployServerId>axonivy.engine</deployServerId>
-              <deployEngineUrl>${deploy.host.url}</deployEngineUrl>
+              <deployEngineUrl>${ivy.deploy.engine.url}</deployEngineUrl>
               <deployFile>${project.build.directory}/${project.artifactId}-${project.version}.zip</deployFile>
               <deployToEngineApplication>msgraph-connector-demo</deployToEngineApplication>
               <deployTestUsers>true</deployTestUsers>

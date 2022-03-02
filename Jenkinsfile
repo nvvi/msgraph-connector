@@ -80,7 +80,7 @@ pipeline {
       steps {
         script {
           maven cmd: 'deploy -Dmaven.test.skip=true' +
-                "-Ddeploy.host.url=${params.deployTo} "
+                "-Divy.deploy.engine.url=${params.deployTo} "
         }
       }
     }
