@@ -5,20 +5,12 @@
   <formats>
     <format>zip</format>
   </formats>
-  <fileSets>
-    <fileSet>
-      <directory>../msgraph-connector/target/</directory>
-      <includes>
-        <include>msgraph-connector-*.iar</include>
-      </includes>
-      <outputDirectory></outputDirectory>
-    </fileSet>
-    <fileSet>
-      <directory>../msgraph-connector-demo/target/</directory>
-      <includes>
-        <include>msgraph-connector-demo-*.iar</include>
-      </includes>
-      <outputDirectory></outputDirectory>
-    </fileSet>
-  </fileSets>
+  <dependencySets>
+		<dependencySet>
+			<useProjectArtifact>false</useProjectArtifact>
+			<includes>
+				<include>*:iar</include>
+			</includes>
+		</dependencySet>
+	</dependencySets>
 </assembly>

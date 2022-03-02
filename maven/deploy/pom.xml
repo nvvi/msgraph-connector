@@ -3,14 +3,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.office365</groupId>
-  <artifactId>msgraph-connector-demo</artifactId>
+  <artifactId>msgraph-connector-deploy</artifactId>
   <version>9.4.0-SNAPSHOT</version>
-  <packaging>iar</packaging>
+  <packaging>pom</packaging>
 
   <dependencies>
     <dependency>
       <groupId>com.axonivy.connector.office365</groupId>
       <artifactId>msgraph-connector</artifactId>
+      <version>${project.version}</version>
+      <type>iar</type>
+    </dependency>
+    <dependency>
+      <groupId>com.axonivy.connector.office365</groupId>
+      <artifactId>msgraph-connector-demo</artifactId>
       <version>${project.version}</version>
       <type>iar</type>
     </dependency>
@@ -39,7 +45,7 @@
             <configuration>
               <appendAssemblyId>false</appendAssemblyId>
               <descriptors>
-                <descriptor>../maven/deploy/zip.xml</descriptor>
+                <descriptor>zip.xml</descriptor>
               </descriptors>
             </configuration>
           </execution>
@@ -50,7 +56,25 @@
         <artifactId>project-build-plugin</artifactId>
         <version>9.4.0-SNAPSHOT</version>
         <extensions>true</extensions>
+        <executions>
+          <execution>
+            <id>test.app.deploy</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>deploy-to-engine</goal>
+            </goals>
+            <configuration>
+              <deployMethod>HTTP</deployMethod>
+              <deployServerId>axonivy.engine</deployServerId>
+              <deployEngineUrl>${deploy.host.url}</deployEngineUrl>
+              <deployFile>${project.build.directory}/${project.artifactId}-${project.version}.zip</deployFile>
+              <deployToEngineApplication>msgraph-connector-demo</deployToEngineApplication>
+              <deployTestUsers>true</deployTestUsers>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
 </project>
+
