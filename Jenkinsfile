@@ -53,8 +53,7 @@ pipeline {
                       "-DdeployApplicationName=msgraph-connector-${deployApplicationName} " +
                       "-Dengine.page.url=${params.engineSource} " +
                       "-Dtest.engine.url=http://${ivyName}:8080 " +
-                      "-Dselenide.remote=http://${seleniumName}:4444/wd/hub " +
-                      "-Ddeploy.host.url=${params.deployTo} " +
+                      "-Dselenide.remote=http://${seleniumName}:4444/wd/hub "
 
                 checkVersions recordIssue: false
               }
@@ -80,7 +79,8 @@ pipeline {
       }
       steps {
         script {
-          maven cmd: 'deploy -Dmaven.test.skip=true'
+          maven cmd: 'deploy -Dmaven.test.skip=true' +
+                "-Ddeploy.host.url=${params.deployTo} "
         }
       }
     }
