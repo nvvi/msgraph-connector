@@ -41,7 +41,8 @@ pipeline {
                       "-DdeployApplicationName=msgraph-connector-${deployApplicationName} " +
                       "-Dengine.page.url=${params.engineSource} " +
                       "-Dtest.engine.url=http://${ivyName}:8080 " +
-                      "-Dselenide.remote=http://${seleniumName}:4444/wd/hub "
+                      "-Dselenide.remote=http://${seleniumName}:4444/wd/hub " +
+                      "-Divy.deploy.engine.url=${params.deployTo} "
 
                 checkVersions recordIssue: false
               }
@@ -49,26 +50,6 @@ pipeline {
           } finally {
             sh "docker network rm ${networkName}"
           }
-        }
-      }
-    }
-
-    stage('deploy') {
-      agent {
-        dockerfile {
-          reuseNode true
-        }
-      }
-      when {
-        allOf {
-          branch 'master'
-          expression { return currentBuild.currentResult == 'SUCCESS' }
-        }
-      }
-      steps {
-        script {
-          maven cmd: 'deploy -Dmaven.test.skip=true' +
-                "-Divy.deploy.engine.url=${params.deployTo} "
         }
       }
     }
