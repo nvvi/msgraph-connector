@@ -23,18 +23,6 @@ pipeline {
   }
 
   stages {
-    stage('check') {
-      agent {
-        docker {
-          image 'mstruebing/editorconfig-checker:2.1.0'
-          reuseNode true
-        }
-      }
-      steps {
-        sh 'ec -no-color'
-      }
-    }
-
     stage('build') {
       steps {
         script {
