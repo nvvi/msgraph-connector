@@ -22,7 +22,7 @@ ml0 @PushWFArc f13 '' #zField
 ml0 @PushWFArc f8 '' #zField
 ml0 @PushWFArc f10 '' #zField
 ml0 @PushWFArc f11 '' #zField
-ml0 @PushWFArc f16 '' #zField
+ml0 @PushWFArc f0 '' #zField
 >Proto ml0 ml0 ms365Mail #zField
 ml0 f5 outLink writeMail.ivp #txt
 ml0 f5 inParamDecl '<> param;' #txt
@@ -121,13 +121,14 @@ ml0 f13 280 64 328 64 #arcP
 ml0 f8 280 192 328 192 #arcP
 ml0 f10 440 192 497 192 #arcP
 ml0 f11 440 64 497 64 #arcP
-ml0 f16 111 64 168 64 #arcP
+ml0 f0 96 79 384 86 #arcP
+ml0 f0 1 96 112 #addKink
+ml0 f0 2 384 112 #addKink
+ml0 f0 1 0.4878472222222222 0 0 #arcLabel
 >Proto ml0 .type com.axonivy.connector.office365.msgraph.demo.MailDemo #txt
 >Proto ml0 .processKind NORMAL #txt
 >Proto ml0 0 0 32 24 18 0 #rect
 >Proto ml0 @|BIcon #fIcon
-ml0 f7 mainOut f16 tail #connect
-ml0 f16 head f3 mainIn #connect
 ml0 f3 mainOut f13 tail #connect
 ml0 f13 head f12 mainIn #connect
 ml0 f12 mainOut f11 tail #connect
@@ -138,3 +139,5 @@ ml0 f6 mainOut f10 tail #connect
 ml0 f10 head f9 mainIn #connect
 ml0 f14 mainOut f8 tail #connect
 ml0 f8 head f6 mainIn #connect
+ml0 f7 mainOut f0 tail #connect
+ml0 f0 head f12 mainIn #connect

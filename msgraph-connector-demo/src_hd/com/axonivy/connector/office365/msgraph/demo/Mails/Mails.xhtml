@@ -18,10 +18,15 @@
             <p:messages></p:messages>
           </f:facet>
 
-          <p:dataTable id="theTable" widgetVar="theTable" value="#{data.mails}" var="mail">
+          <p:dataTable id="theTable" var="mail" widgetVar="theTable" value="#{mailsBean.mailDataModel}" rows="10"
+            paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+            paginator="true" paginatorPosition="bottom" 
+            lazy="true">
           
             <p:column headerText="Sender" id="sender" style="width: 30%;">
-              <p:outputLabel>#{mail.from.emailAddress.name}<br/>#{mail.from.emailAddress.address}</p:outputLabel>
+              <p:outputLabel value="#{mail.from.emailAddress.name}"/>
+              <br/>
+              <p:outputLabel value="#{mail.from.emailAddress.address}"/>
             </p:column>
 
             <p:column headerText="Mail" id="subject">
