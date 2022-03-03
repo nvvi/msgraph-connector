@@ -42,7 +42,8 @@ pipeline {
                       "-Dengine.page.url=${params.engineSource} " +
                       "-Dtest.engine.url=http://${ivyName}:8080 " +
                       "-Dselenide.remote=http://${seleniumName}:4444/wd/hub " +
-                      "-Divy.deploy.engine.url=${params.deployTo} "
+                      "-Divy.deploy.engine.url=${params.deployTo} " +
+                      "-P demo.io"
 
                 checkVersions recordIssue: false
               }
