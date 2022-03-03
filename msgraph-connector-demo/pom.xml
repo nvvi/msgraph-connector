@@ -6,6 +6,7 @@
   <artifactId>msgraph-connector-demo</artifactId>
   <version>9.4.0-SNAPSHOT</version>
   <packaging>iar</packaging>
+
   <dependencies>
     <dependency>
       <groupId>com.axonivy.connector.office365</groupId>
@@ -14,6 +15,7 @@
       <type>iar</type>
     </dependency>
   </dependencies>
+
   <pluginRepositories>
     <pluginRepository>
       <id>sonatype</id>
@@ -23,6 +25,7 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+
   <build>
     <plugins>
       <plugin>
