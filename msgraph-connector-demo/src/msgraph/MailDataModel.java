@@ -23,10 +23,10 @@ public class MailDataModel extends LazyDataModel<MicrosoftGraphMessage> {
     var restClient = new MsGraphRest().first(first).pageSize(pageSize);
     var messages = restClient.getMessages();
 
-    if (messages.get_count() == null) {
+    if (messages.getCount() == null) {
       setRowCount(messages.getValue().size());
     } else {
-      setRowCount(messages.get_count());
+      setRowCount(messages.getCount());
     }
     return messages.getValue();
   }

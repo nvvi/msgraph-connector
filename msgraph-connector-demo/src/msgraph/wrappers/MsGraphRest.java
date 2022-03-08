@@ -6,7 +6,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 import ch.ivyteam.ivy.environment.Ivy;
-import msgraph.models.CollectionOfMessage;
+import msgraph.models.CollectionOfMessageWithCount;
 
 public class MsGraphRest {
   private final WebTarget restClient;
@@ -27,14 +27,14 @@ public class MsGraphRest {
     return this;
   }
 
-  public CollectionOfMessage getMessages() {
-    CollectionOfMessage collection = restClient
+  public CollectionOfMessageWithCount getMessages() {
+    CollectionOfMessageWithCount collection = restClient
             .path("/me/messages")
             .queryParam("$count", true)
             .queryParam("$skip", skip)
             .queryParam("$top", top)
             .request(MediaType.APPLICATION_JSON).get()
-            .readEntity(CollectionOfMessage.class);
+            .readEntity(CollectionOfMessageWithCount.class);
 
     return collection;
   }
