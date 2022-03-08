@@ -17,19 +17,17 @@ Ms0 @UdExitEnd f4 '' #zField
 Ms0 @PushWFArc f5 '' #zField
 >Proto Ms0 Ms0 MailsProcess #zField
 Ms0 f0 guid 17F263C6C38DAB79 #txt
-Ms0 f0 method start(java.util.List<com.microsoft.graph.MicrosoftGraphMessage>) #txt
-Ms0 f0 inParameterDecl '<java.util.List<com.microsoft.graph.MicrosoftGraphMessage> mails> param;' #txt
-Ms0 f0 inParameterMapAction 'out.mails=param.mails;
-' #txt
+Ms0 f0 method start() #txt
+Ms0 f0 inParameterDecl '<> param;' #txt
 Ms0 f0 outParameterDecl '<> result;' #txt
 Ms0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>start(List&lt;MicrosoftGraphMessage&gt;)</name>
+        <name>start()</name>
     </language>
 </elementInfo>
 ' #txt
-Ms0 f0 83 51 26 26 -46 15 #rect
+Ms0 f0 83 51 26 26 -14 18 #rect
 Ms0 f1 211 51 26 26 0 12 #rect
 Ms0 f2 109 64 211 64 #arcP
 Ms0 f3 guid 17F263C6C3B7E1BC #txt

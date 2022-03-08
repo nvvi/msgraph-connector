@@ -18,11 +18,11 @@ ml0 @EndTask f4 '' #zField
 ml0 @StartRequest f7 '' #zField
 ml0 @UserDialog f12 '' #zField
 ml0 @PushWFArc f15 '' #zField
-ml0 @PushWFArc f13 '' #zField
 ml0 @PushWFArc f8 '' #zField
 ml0 @PushWFArc f10 '' #zField
 ml0 @PushWFArc f11 '' #zField
 ml0 @PushWFArc f0 '' #zField
+ml0 @PushWFArc f1 '' #zField
 >Proto ml0 ml0 ms365Mail #zField
 ml0 f5 outLink writeMail.ivp #txt
 ml0 f5 inParamDecl '<> param;' #txt
@@ -44,7 +44,6 @@ ml0 f6 requestActionDecl '<msgraph.connector.NewMail mail> param;' #txt
 ml0 f6 requestMappingAction 'param.mail=in.mail;
 ' #txt
 ml0 f6 responseMappingAction 'out=in;
-out.mails=[ result.message ];
 ' #txt
 ml0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -56,20 +55,18 @@ ml0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ml0 f6 328 170 112 44 -28 -7 #rect
 ml0 f9 497 177 30 30 0 15 #rect
 ml0 f3 clientId 007036dc-72d1-429f-88a7-ba5d5cf5ae58 #txt
-ml0 f3 path /me/messages #txt
-ml0 f3 resultType com.microsoft.graph.CollectionOfMessage #txt
-ml0 f3 responseMapping 'out.mails=result.value;
-' #txt
+ml0 f3 path /me #txt
+ml0 f3 resultType com.microsoft.graph.MicrosoftGraphUser #txt
 ml0 f3 clientErrorCode ivy:error:rest:client #txt
 ml0 f3 statusErrorCode ivy:error:rest:client #txt
 ml0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>Read Inbox</name>
+        <name>Authenticate</name>
     </language>
 </elementInfo>
 ' #txt
-ml0 f3 168 42 112 44 -34 -7 #rect
+ml0 f3 168 42 112 44 -35 -8 #rect
 ml0 f14 dialogId com.axonivy.connector.office365.msgraph.demo.WriteMail #txt
 ml0 f14 startMethod start() #txt
 ml0 f14 requestActionDecl '<> param;' #txt
@@ -102,10 +99,8 @@ ml0 f7 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ml0 f7 @C|.responsibility Everybody #txt
 ml0 f7 81 49 30 30 -25 17 #rect
 ml0 f12 dialogId com.axonivy.connector.office365.msgraph.demo.Mails #txt
-ml0 f12 startMethod start(java.util.List<com.microsoft.graph.MicrosoftGraphMessage>) #txt
-ml0 f12 requestActionDecl '<java.util.List<com.microsoft.graph.MicrosoftGraphMessage> mails> param;' #txt
-ml0 f12 requestMappingAction 'param.mails=in.mails;
-' #txt
+ml0 f12 startMethod start() #txt
+ml0 f12 requestActionDecl '<> param;' #txt
 ml0 f12 responseMappingAction 'out=in;
 ' #txt
 ml0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -117,20 +112,15 @@ ml0 f12 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 ml0 f12 328 42 112 44 -15 -7 #rect
 ml0 f15 111 192 168 192 #arcP
-ml0 f13 280 64 328 64 #arcP
 ml0 f8 280 192 328 192 #arcP
 ml0 f10 440 192 497 192 #arcP
 ml0 f11 440 64 497 64 #arcP
-ml0 f0 96 79 384 86 #arcP
-ml0 f0 1 96 112 #addKink
-ml0 f0 2 384 112 #addKink
-ml0 f0 1 0.4878472222222222 0 0 #arcLabel
+ml0 f0 111 64 168 64 #arcP
+ml0 f1 280 64 328 64 #arcP
 >Proto ml0 .type com.axonivy.connector.office365.msgraph.demo.MailDemo #txt
 >Proto ml0 .processKind NORMAL #txt
 >Proto ml0 0 0 32 24 18 0 #rect
 >Proto ml0 @|BIcon #fIcon
-ml0 f3 mainOut f13 tail #connect
-ml0 f13 head f12 mainIn #connect
 ml0 f12 mainOut f11 tail #connect
 ml0 f11 head f4 mainIn #connect
 ml0 f5 mainOut f15 tail #connect
@@ -140,4 +130,6 @@ ml0 f10 head f9 mainIn #connect
 ml0 f14 mainOut f8 tail #connect
 ml0 f8 head f6 mainIn #connect
 ml0 f7 mainOut f0 tail #connect
-ml0 f0 head f12 mainIn #connect
+ml0 f0 head f3 mainIn #connect
+ml0 f3 mainOut f1 tail #connect
+ml0 f1 head f12 mainIn #connect

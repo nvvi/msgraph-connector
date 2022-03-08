@@ -11,15 +11,6 @@ import com.microsoft.graph.MicrosoftGraphMessage;
 import msgraph.wrappers.MsGraphRest;
 
 public class MailDataModel extends LazyDataModel<MicrosoftGraphMessage> {
-  private String filter;
-
-  public String getFilter() {
-    return filter;
-  }
-
-  public void setFilter(String filter) {
-    this.filter = filter;
-  }
 
   @Override
   public Object getRowKey(MicrosoftGraphMessage mail) {
@@ -31,8 +22,13 @@ public class MailDataModel extends LazyDataModel<MicrosoftGraphMessage> {
           Map<String, Object> filters) {
     var restClient = new MsGraphRest().first(first).pageSize(pageSize);
     var messages = restClient.getMessages();
-    setRowCount(messages.size());
-    return messages;
+
+    if (messages.getCount() == null) {
+      setRowCount(messages.getValue().size());
+    } else {
+      setRowCount(messages.getCount());
+    }
+    return messages.getValue();
   }
 
 }
