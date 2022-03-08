@@ -5,7 +5,7 @@
       "data": {
         "projects": [
           {
-            "groupId": "MY-GROUP-ID",
+            "groupId": "com.axonivy.connector.office365",
             "artifactId": "MY-PRODUCT-NAME-demo",
             "version": "${version}",
             "type": "iar"

@@ -18,9 +18,9 @@ public class WebTestMailBoxIT{
   @Test
   public void checkMailContent() {
     // set environment
-    open(EngineUrl.createProcessUrl("/msgraph-connector-test/17F40684A56F5FEF/start.ivp?environment=dev-axonivy"));
+    open(EngineUrl.createProcessUrl("/msgraph-mail-test/17F40684A56F5FEF/start.ivp?environment=dev-axonivy"));
 
-    open(EngineUrl.createProcessUrl("/msgraph-connector-demo/17F262FCF88E26A2/inbox.ivp"));
+    open(EngineUrl.createProcessUrl("/msgraph-mail-demo/17F262FCF88E26A2/inbox.ivp"));
 
     Table table = PrimeUi.table(By.id("form:theTable"));
     table.contains("Vincent Biret");
