@@ -8,7 +8,7 @@ import org.primefaces.model.SortOrder;
 
 import com.microsoft.graph.MicrosoftGraphMessage;
 
-import msgraph.wrappers.MsGraphRestWrapper;
+import msgraph.wrappers.MsGraphRest;
 
 public class MailDataModel extends LazyDataModel<MicrosoftGraphMessage> {
   private String filter;
@@ -29,7 +29,7 @@ public class MailDataModel extends LazyDataModel<MicrosoftGraphMessage> {
   @Override
   public List<MicrosoftGraphMessage> load(int first, int pageSize, String sortField, SortOrder sortOrder,
           Map<String, Object> filters) {
-    var restClient = new MsGraphRestWrapper().first(first).pageSize(pageSize);
+    var restClient = new MsGraphRest().first(first).pageSize(pageSize);
     var messages = restClient.getMessages();
     setRowCount(messages.size());
     return messages;
