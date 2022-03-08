@@ -20,8 +20,7 @@
 
           <p:dataTable id="theTable" var="mail" widgetVar="theTable" value="#{mailsBean.mailDataModel}" rows="10"
             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-            paginator="true" paginatorPosition="bottom" 
-            lazy="true">
+            paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="10,20,50" lazy="true">
           
             <p:column headerText="Sender" id="sender" style="width: 30%;">
               <p:outputLabel value="#{mail.from.emailAddress.name}"/>
