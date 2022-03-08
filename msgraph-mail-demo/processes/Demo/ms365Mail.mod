@@ -67,7 +67,7 @@ ml0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 ml0 f3 168 42 112 44 -35 -8 #rect
-ml0 f14 dialogId com.axonivy.connector.office365.msgraph.demo.WriteMail #txt
+ml0 f14 dialogId msgraph.mail.demo.WriteMail #txt
 ml0 f14 startMethod start() #txt
 ml0 f14 requestActionDecl '<> param;' #txt
 ml0 f14 responseMappingAction 'out=in;
@@ -98,7 +98,7 @@ ml0 f7 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 ml0 f7 @C|.responsibility Everybody #txt
 ml0 f7 81 49 30 30 -25 17 #rect
-ml0 f12 dialogId com.axonivy.connector.office365.msgraph.demo.Mails #txt
+ml0 f12 dialogId msgraph.mail.demo.Mails #txt
 ml0 f12 startMethod start() #txt
 ml0 f12 requestActionDecl '<> param;' #txt
 ml0 f12 responseMappingAction 'out=in;
@@ -117,7 +117,7 @@ ml0 f10 440 192 497 192 #arcP
 ml0 f11 440 64 497 64 #arcP
 ml0 f0 111 64 168 64 #arcP
 ml0 f1 280 64 328 64 #arcP
->Proto ml0 .type com.axonivy.connector.office365.msgraph.demo.MailDemo #txt
+>Proto ml0 .type msgraph.mail.demo.MailDemo #txt
 >Proto ml0 .processKind NORMAL #txt
 >Proto ml0 0 0 32 24 18 0 #rect
 >Proto ml0 @|BIcon #fIcon
