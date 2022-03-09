@@ -4,16 +4,28 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.office365</groupId>
   <artifactId>msgraph-todo-demo</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>9.4.0-SNAPSHOT</version>
   <packaging>iar</packaging>
+
   <dependencies>
     <dependency>
       <groupId>com.axonivy.connector.office365</groupId>
       <artifactId>msgraph-connector</artifactId>
-      <version>[9.4.0-SNAPSHOT,)</version>
+      <version>${project.version}</version>
       <type>iar</type>
     </dependency>
   </dependencies>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+  
   <build>
     <plugins>
       <plugin>

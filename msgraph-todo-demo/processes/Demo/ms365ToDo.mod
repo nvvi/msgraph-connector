@@ -88,7 +88,7 @@ mo0 f2 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 mo0 f2 328 202 112 44 -52 -7 #rect
 mo0 f5 440 224 497 224 #arcP
-mo0 f6 dialogId com.axonivy.connector.office365.msgraph.demo.Tasks #txt
+mo0 f6 dialogId msgraph.todo.demo.Tasks #txt
 mo0 f6 startMethod start(java.util.List<com.microsoft.graph.MicrosoftGraphTodoTask>) #txt
 mo0 f6 requestActionDecl '<java.util.List<com.microsoft.graph.MicrosoftGraphTodoTask> todo> param;' #txt
 mo0 f6 requestMappingAction 'param.todo=in.todo;
@@ -105,7 +105,7 @@ mo0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 mo0 f6 328 42 112 44 -18 -7 #rect
 mo0 f9 280 64 328 64 #arcP
 mo0 f10 440 64 497 64 #arcP
-mo0 f11 dialogId com.axonivy.connector.office365.msgraph.demo.CreateTask #txt
+mo0 f11 dialogId msgraph.todo.demo.CreateTask #txt
 mo0 f11 startMethod start() #txt
 mo0 f11 requestActionDecl '<> param;' #txt
 mo0 f11 responseMappingAction 'out=in;
