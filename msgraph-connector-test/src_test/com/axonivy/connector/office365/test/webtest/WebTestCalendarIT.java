@@ -1,4 +1,4 @@
-package com.axonivy.connector.office365.test;
+package com.axonivy.connector.office365.test.webtest;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
