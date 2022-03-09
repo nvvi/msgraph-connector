@@ -15,7 +15,7 @@
 
       <h:form id="form">
 
-        <p:dataTable var="task" value="#{data.todo}">
+        <p:dataTable id="tasksTable" var="task" value="#{data.todo}">
           <p:column style="width: 50px; font-size: 20px;">
             <h:panelGroup rendered="#{task.status.value eq 'completed'}">
               <i class="si si-check-circle-1"/>
