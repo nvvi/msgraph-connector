@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.microsoft.graph.MicrosoftGraphEvent;
@@ -17,6 +18,7 @@ import ch.ivyteam.ivy.security.ISession;
 import msgraph.calendar.demo.CalendarDemo;
 import msgraph.connector.NewEvent;
 
+@Disabled
 @IvyProcessTest
 class TestCalendarDemo {
 

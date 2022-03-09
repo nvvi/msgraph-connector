@@ -2,6 +2,7 @@ package com.axonivy.connector.office365.test.processtest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.microsoft.graph.MicrosoftGraphTodoTask;
@@ -15,6 +16,7 @@ import ch.ivyteam.ivy.security.ISession;
 import msgraph.connector.NewToDo;
 import msgraph.todo.demo.ToDoDemo;
 
+@Disabled
 @IvyProcessTest
 public class TestToDoDemo {
 
