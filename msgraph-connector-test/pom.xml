@@ -8,12 +8,6 @@
   <packaging>iar-integration-test</packaging>
   <dependencies>
     <dependency>
-      <groupId>com.axonivy.connector.office365</groupId>
-      <artifactId>msgraph-connector-demo</artifactId>
-      <version>${project.version}</version>
-      <type>iar</type>
-    </dependency>
-    <dependency>
       <groupId>com.axonivy.ivy.test</groupId>
       <artifactId>unit-tester</artifactId>
       <version>9.3.0</version>
@@ -24,6 +18,24 @@
       <artifactId>web-tester</artifactId>
       <version>9.3.0</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.axonivy.connector.office365</groupId>
+      <artifactId>msgraph-mail-demo</artifactId>
+      <version>${project.version}</version>
+      <type>iar</type>
+    </dependency>
+    <dependency>
+      <groupId>com.axonivy.connector.office365</groupId>
+      <artifactId>msgraph-todo-demo</artifactId>
+      <version>${project.version}</version>
+      <type>iar</type>
+    </dependency>
+    <dependency>
+      <groupId>com.axonivy.connector.office365</groupId>
+      <artifactId>msgraph-calendar-demo</artifactId>
+      <version>${project.version}</version>
+      <type>iar</type>
     </dependency>
   </dependencies>
   <pluginRepositories>

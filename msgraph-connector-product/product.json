@@ -5,8 +5,20 @@
       "data": {
         "projects": [
           {
-            "groupId": "MY-GROUP-ID",
-            "artifactId": "MY-PRODUCT-NAME-demo",
+            "groupId": "com.axonivy.connector.office365",
+            "artifactId": "msgraph-mail-demo",
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.connector.office365",
+            "artifactId": "msgraph-calendar-demo",
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.connector.office365",
+            "artifactId": "msgraph-todo-demo",
             "version": "${version}",
             "type": "iar"
           }
@@ -27,8 +39,8 @@
       "data": {
         "dependencies": [
           {
-            "groupId": "MY-GROUP-ID",
-            "artifactId": "MY-PRODUCT-NAME",
+            "groupId": "com.axonivy.connector.office365",
+            "artifactId": "msgraph-connector",
             "version": "${version}",
             "type": "iar"
           }

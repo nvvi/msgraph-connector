@@ -8,7 +8,9 @@
 
   <modules>
     <module>${project.name}</module>
-    <module>${project.name}-demo</module>
+    <module>msgraph-mail-demo</module>
+    <module>msgraph-calendar-demo</module>
+    <module>msgraph-todo-demo</module>
     <module>${project.name}-test</module>
     <module>${project.name}-product</module>
     <module>${project.name}-app</module>
