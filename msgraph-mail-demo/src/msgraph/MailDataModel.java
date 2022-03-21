@@ -3,17 +3,17 @@ package msgraph;
 import java.util.List;
 import java.util.Map;
 
-import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
 import com.microsoft.graph.MicrosoftGraphMessage;
 
+import ch.ivyteam.ivy.jsf.primefaces.legazy.LazyDataModel7;
 import msgraph.wrappers.MsGraphRest;
 
-public class MailDataModel extends LazyDataModel<MicrosoftGraphMessage> {
+public class MailDataModel extends LazyDataModel7<MicrosoftGraphMessage> {
 
   @Override
-  public Object getRowKey(MicrosoftGraphMessage mail) {
+  public String getRowKey(MicrosoftGraphMessage mail) {
     return mail.getId();
   }
 
