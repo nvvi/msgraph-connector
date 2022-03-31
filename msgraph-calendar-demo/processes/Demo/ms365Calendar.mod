@@ -1,9 +1,11 @@
 [Ivy]
-176D21535A8FEE20 9.3.1 #module
+176D21535A8FEE20 9.4.1 #module
 >Proto >Proto Collection #zClass
 mo0 ms365Calendar Big #zClass
 mo0 B #cInfo
 mo0 #process
+mo0 @TextInP .colors .colors #zField
+mo0 @TextInP color color #zField
 mo0 @TextInP .type .type #zField
 mo0 @TextInP .processKind .processKind #zField
 mo0 @TextInP .xml .xml #zField

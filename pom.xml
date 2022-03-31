@@ -7,6 +7,8 @@
   <packaging>pom</packaging>
 
   <modules>
+    <!-- workaround for XIVY-8025 -->
+    <!-- <module>msgraph-oauth-feature</module> -->
     <module>${project.name}</module>
     <module>msgraph-mail-demo</module>
     <module>msgraph-calendar-demo</module>
