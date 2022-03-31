@@ -4,7 +4,7 @@
   <groupId>msgraph.oauth.feature</groupId>
   <artifactId>msgraph-oauth-feature</artifactId>
   <version>9.4.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>iar</packaging>
 
   <build>
     <plugins>
@@ -12,27 +12,25 @@
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
         <version>9.3.1</version>
+        <configuration>
+          <ivyVersion>9.4.0</ivyVersion>
+        </configuration>
         <extensions>true</extensions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <artifactId>maven-assembly-plugin</artifactId>
         <executions>
           <execution>
-            <id>attach-artifacts</id>
+            <id>make-assembly</id>
             <phase>package</phase>
             <goals>
-              <goal>attach-artifact</goal>
+              <goal>single</goal>
             </goals>
             <configuration>
-              <artifacts>
-                <artifact>
-                  <file>target/msgraph-oauth-feature-*.jar</file>
-                  <type>jar</type>
-                  <classifier>built-jar</classifier>
-                </artifact>
-              </artifacts>
+              <appendAssemblyId>false</appendAssemblyId>
+              <descriptors>
+                <descriptor>jar.xml</descriptor>
+              </descriptors>
             </configuration>
           </execution>
         </executions>
