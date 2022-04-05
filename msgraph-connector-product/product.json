@@ -1,12 +1,12 @@
 {
   "installers": [
-      {
+    {
       "id": "maven-import",
       "data": {
         "projects": [
           {
             "groupId": "com.axonivy.connector.office365",
-            "artifactId": "msgraph-todo-demo",
+            "artifactId": "@artifact.id@",
             "version": "${version}",
             "type": "iar"
           }

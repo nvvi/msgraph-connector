@@ -5,6 +5,41 @@
   <version>9.4.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
+  <profiles>
+    <profile>
+      <id>demo.io</id>
+      <activation>
+        <property>
+          <name>${project.name}</name>
+          <value>!msgraph-connector-product</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+              <execution>
+                <id>prepare-product-json</id>
+                <phase>generate-sources</phase>
+                <configuration>
+                  <tasks>
+                    <copy file="../../product.json" tofile="${project.build.directory}/product.json" />
+                    <replace file="target/product.json" token="@artifact.id@" value="${project.artifactId}" />
+                  </tasks>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
   <build>
     <plugins>
       <plugin>
