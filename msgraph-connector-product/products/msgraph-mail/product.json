@@ -1,5 +1,27 @@
 {
   "installers": [
+      {
+      "id": "maven-import",
+      "data": {
+        "projects": [
+          {
+            "groupId": "com.axonivy.connector.office365",
+            "artifactId": "msgraph-mail-demo",
+            "version": "${version}",
+            "type": "iar"
+          }
+        ],
+        "repositories": [
+          {
+            "id": "axonivy.public",
+            "url": "https://maven.axonivy.com",
+            "snapshots": {
+              "enabled": "true"
+            }
+          }
+        ]
+      }
+    },
     {
       "id": "maven-dependency",
       "data": {
