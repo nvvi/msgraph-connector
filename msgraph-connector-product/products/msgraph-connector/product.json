@@ -6,7 +6,25 @@
         "projects": [
           {
             "groupId": "com.axonivy.connector.office365",
-            "artifactId": "@artifact.id@",
+            "artifactId": "msgraph-mail-demo",
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.connector.office365",
+            "artifactId": "msgraph-calendar-demo",
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.connector.office365",
+            "artifactId": "msgraph-todo-demo",
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.connector.office365",
+            "artifactId": "msgraph-connector-test",
             "version": "${version}",
             "type": "iar"
           }
