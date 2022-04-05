@@ -12,9 +12,21 @@
       <includes>
         <include>product.json</include>
         <include>openapi.json</include>
-        <include>README.md</include>
-        <include>**/*.png</include>
+        <include>doc/**/*.png</include>
       </includes>
     </fileSet>
+    <fileSet>
+      <directory>target/doc</directory>
+      <includes>
+        <include>**/*.png</include>
+      </includes>
+      <outputDirectory>doc</outputDirectory>
+    </fileSet>
   </fileSets>
+  <files>
+    <file>
+      <source>${project.build.directory}/README.md</source>
+      <destName>README.md</destName>
+    </file>
+  </files>
 </assembly>

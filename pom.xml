@@ -14,7 +14,10 @@
     <module>msgraph-calendar-demo</module>
     <module>msgraph-todo-demo</module>
     <module>${project.name}-test</module>
-    <module>${project.name}-product</module>
+    <module>${project.name}-product/products/${project.name}</module>
+    <module>${project.name}-product/products/msgraph-calendar</module>
+    <module>${project.name}-product/products/msgraph-todo</module>
+    <module>${project.name}-product/products/msgraph-mail</module>
     <module>${project.name}-app</module>
   </modules>
 

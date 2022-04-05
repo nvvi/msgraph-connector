@@ -8,6 +8,28 @@
   <build>
     <plugins>
       <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <configuration>
+              <tasks>
+                <copy todir="${project.build.directory}">
+                  <fileset dir="../../" includes="doc/**" />
+                </copy>
+                <copy file="README.md" tofile="${project.build.directory}/README.md" />
+                <loadfile property="setupText" srcFile="../../setup.md" encoding="UTF-8" />
+                <echo file="${project.build.directory}/README.md" append="true" encoding="UTF-8">${setupText}</echo>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.3.0</version>
@@ -20,7 +42,7 @@
             <configuration>
               <appendAssemblyId>false</appendAssemblyId>
               <descriptors>
-                <descriptor>zip.xml</descriptor>
+                <descriptor>../../zip.xml</descriptor>
               </descriptors>
             </configuration>
           </execution>
