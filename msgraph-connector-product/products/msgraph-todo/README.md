@@ -14,4 +14,4 @@ connector:
 
 ## Demo
 
-![demo-toDo](doc/img/demo_toDo.png)
+![demo-toDo](doc/img/demo_todo.png)
