@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
@@ -15,7 +14,6 @@ import ch.ivyteam.ivy.environment.AppFixture;
 import ch.ivyteam.ivy.security.ISession;
 import msgraph.connector.NewMail;
 
-@Disabled
 @IvyProcessTest
 class TestMailDemo {
 
