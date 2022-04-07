@@ -23,7 +23,7 @@ jobs:
       run: |
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
-        git checkout -b new-release
+        git checkout -b new-oauth-release
 
     - name: Build with Maven
       env:
@@ -34,6 +34,6 @@ jobs:
       uses: repo-sync/pull-request@v2
       with:
         destination_branch: ${{ steps.branch-name.outputs.current_branch }}
-        source_branch: new-release
-        pr_title: "Release"
+        source_branch: new-oauth-release
+        pr_title: "OAuth Release"
         github_token: ${{ secrets.GITHUB_TOKEN }}

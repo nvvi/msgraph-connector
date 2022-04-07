@@ -10,7 +10,7 @@
     <dependency>
       <groupId>msgraph.oauth.feature</groupId>
       <artifactId>msgraph-oauth-feature</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.1</version>
     </dependency>
   </dependencies>
 
