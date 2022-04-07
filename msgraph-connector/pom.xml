@@ -24,6 +24,16 @@
     </pluginRepository>
   </pluginRepositories>
 
+  <repositories>
+    <repository>
+      <id>axonivy.public</id>
+      <url>https://maven.axonivy.com</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
   <build>
     <plugins>
       <plugin>
