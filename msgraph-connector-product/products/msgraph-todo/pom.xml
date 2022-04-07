@@ -10,4 +10,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
   
+  <properties>
+    <skip-readme>false</skip-readme>
+  </properties>
 </project>

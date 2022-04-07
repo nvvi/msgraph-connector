@@ -10,4 +10,9 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
+  <properties>
+    <skip-product-json>true</skip-product-json>
+    <skip-readme>false</skip-readme>
+  </properties>
+
 </project>
