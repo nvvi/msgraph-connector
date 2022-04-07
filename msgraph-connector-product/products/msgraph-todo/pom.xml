@@ -11,6 +11,7 @@
   </parent>
   
   <properties>
+    <skip-product-json>false</skip-product-json>
     <skip-readme>false</skip-readme>
   </properties>
 </project>
