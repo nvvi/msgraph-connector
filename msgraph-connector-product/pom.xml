@@ -24,6 +24,7 @@
               <tasks>
                 <copy file="../../product.json" tofile="${project.build.directory}/product.json" />
                 <replace file="target/product.json" token="@artifact.id@" value="${project.artifactId}" />
+                <replace file="target/product.json" token="-product" value="-demo" />
               </tasks>
             </configuration>
             <goals>
