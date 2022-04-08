@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.office365</groupId>
   <artifactId>msgraph-product</artifactId>
-  <version>9.4.1</version>
+  <version>9.4.2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
