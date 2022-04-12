@@ -21,12 +21,6 @@
             "artifactId": "msgraph-todo-demo",
             "version": "${version}",
             "type": "iar"
-          },
-          {
-            "groupId": "com.axonivy.connector.office365",
-            "artifactId": "msgraph-connector-test",
-            "version": "${version}",
-            "type": "iar"
           }
         ],
         "repositories": [
