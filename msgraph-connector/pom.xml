@@ -8,7 +8,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>msgraph.oauth.feature</groupId>
+      <groupId>com.axonivy.connector.msgraph</groupId>
       <artifactId>msgraph-oauth-feature</artifactId>
       <version>9.4.1</version>
     </dependency>
@@ -26,7 +26,7 @@
 
   <repositories>
     <repository>
-      <id>axonivy.public</id>
+      <id>maven.axonivy.com</id>
       <url>https://maven.axonivy.com</url>
       <snapshots>
         <enabled>true</enabled>
