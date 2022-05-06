@@ -10,7 +10,7 @@
     <dependency>
       <groupId>com.axonivy.connector.msgraph</groupId>
       <artifactId>msgraph-oauth-feature</artifactId>
-      <version>9.4.1</version>
+      <version>9.4.2</version>
     </dependency>
   </dependencies>
 
