@@ -38,6 +38,7 @@ public class OAuth2Feature implements Feature
     String CLIENT_SECRET = "AUTH.secretKey";
     String SCOPE = "AUTH.scope";
     String AUTH_BASE_URI = "AUTH.baseUri";
+    String USE_APP_PERMISSIONS = "AUTH.useAppPermissions";
   }
   
   @Override
@@ -59,7 +60,7 @@ public class OAuth2Feature implements Feature
     FeatureConfig config = ctxt.config;
     var authCode = ctxt.authCode();
     var refreshToken = ctxt.refreshToken();
-    if (authCode.isEmpty() && refreshToken.isEmpty())
+    if (authCode.isEmpty() && refreshToken.isEmpty() && !"true".equals(config.read(Property.USE_APP_PERMISSIONS).orElse(null)))
     {
       authError(config, uriFactory)
         .withMessage("missing permission from user to act in his name.")
@@ -77,18 +78,24 @@ public class OAuth2Feature implements Feature
   {
     Form form = new Form();
     form.param("client_id", config.readMandatory(Property.APP_ID));
-    form.param("scope", getScope(config));
     if (authCode.isPresent())
     {
+    //use user permissions
+      form.param("scope", getScope(config));
+      form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
       form.param("code", authCode.get());
       form.param("grant_type", "authorization_code");
+    }else {//use app permission
+    	form.param("scope", "https://graph.microsoft.com/.default");    	 
+    	form.param("grant_type", "client_credentials");
     }
     if (refreshToken.isPresent())
     {
+      form.param("scope", getScope(config));
+      form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
       form.param("refresh_token", refreshToken.get());
       form.param("grant_type", "refresh_token");
     }
-    form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
     form.param("client_secret", config.readMandatory(Property.CLIENT_SECRET));
     return form;
   }
