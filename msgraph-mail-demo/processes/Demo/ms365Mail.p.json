@@ -1,5 +1,5 @@
 {
-  "format" : "9.4.17",
+  "format" : "9.4.18",
   "id" : "17F262FCF88E26A2",
   "data" : "msgraph.mail.demo.MailDemo",
   "elements" : [ {
@@ -52,8 +52,7 @@
         "resultType" : "com.microsoft.graph.MicrosoftGraphUser"
       },
       "visual" : {
-        "at" : { "x" : 224, "y" : 64 },
-        "labelOffset" : { "x" : -35, "y" : -8 }
+        "at" : { "x" : 224, "y" : 64 }
       },
       "connect" : { "id" : "f1", "to" : "f12" }
     }, {
