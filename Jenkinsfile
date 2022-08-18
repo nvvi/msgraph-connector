@@ -45,8 +45,6 @@ pipeline {
                       "-Dselenide.remote=http://${seleniumName}:4444/wd/hub " +
                       "-Divy.deploy.engine.url=${params.deployTo} " +
                       "-P demo.io"
-
-                checkVersions recordIssue: false
               }
             }
           } finally {
