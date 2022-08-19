@@ -3,12 +3,11 @@
   <groupId>com.axonivy.connector.office365</groupId>
   <name>msgraph-connector</name>
   <artifactId>msgraph-modules</artifactId>
-  <version>9.4.3-SNAPSHOT</version>
+  <version>9.4.4-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
-    <!-- workaround for XIVY-8025 -->
-    <!-- <module>msgraph-oauth-feature</module> -->
+    <module>msgraph-oauth-feature</module>
     <module>${project.name}</module>
     <module>msgraph-mail-demo</module>
     <module>msgraph-calendar-demo</module>
