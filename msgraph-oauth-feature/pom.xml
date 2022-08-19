@@ -3,12 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.msgraph</groupId>
   <artifactId>msgraph-oauth-feature</artifactId>
-  <version>9.4.4</version>
+  <version>9.4.5-SNAPSHOT</version>
   <packaging>iar</packaging>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/axonivy-market/msgraph-connector.git</developerConnection>
-    <tag>v9.4.4</tag>
+    <developerConnection>scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
+    <tag>HEAD</tag>
   </scm>
 
   <pluginRepositories>
