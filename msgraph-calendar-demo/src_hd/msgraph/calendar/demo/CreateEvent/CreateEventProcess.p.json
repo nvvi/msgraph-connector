@@ -1,5 +1,5 @@
 {
-  "format" : "9.4.19",
+  "format" : "9.4.20",
   "id" : "1783A70465BF19F8",
   "data" : "msgraph.calendar.demo.CreateEvent.CreateEventData",
   "kind" : "HTML_DIALOG",
@@ -93,7 +93,7 @@
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 352 },
-        "labelOffset" : { "x" : -12, "y" : 15 }
+        "labelOffset" : { "x" : 19, "y" : 35 }
       },
       "connect" : { "id" : "f11", "to" : "f9" }
     } ]

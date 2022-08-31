@@ -1,5 +1,5 @@
 {
-  "format" : "9.4.19",
+  "format" : "9.4.20",
   "id" : "176F208BF8721ECC",
   "data" : "msgraph.todo.demo.ToDoDemo",
   "elements" : [ {
@@ -13,7 +13,7 @@
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 },
-        "labelOffset" : { "x" : -25, "y" : 17 }
+        "labelOffset" : { "x" : 18, "y" : 37 }
       },
       "connect" : { "id" : "f4", "to" : "f14" }
     }, {
@@ -32,7 +32,7 @@
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 224 },
-        "labelOffset" : { "x" : -36, "y" : 21 }
+        "labelOffset" : { "x" : 17, "y" : 41 }
       },
       "connect" : { "id" : "f12", "to" : "f11" }
     }, {

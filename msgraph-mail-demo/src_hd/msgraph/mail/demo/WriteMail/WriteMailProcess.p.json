@@ -1,5 +1,5 @@
 {
-  "format" : "9.4.19",
+  "format" : "9.4.20",
   "id" : "17F2641240C1D006",
   "data" : "msgraph.mail.demo.WriteMail.WriteMailData",
   "kind" : "HTML_DIALOG",
@@ -93,7 +93,7 @@
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 352 },
-        "labelOffset" : { "x" : -12, "y" : 15 }
+        "labelOffset" : { "x" : 19, "y" : 35 }
       },
       "connect" : { "id" : "f11", "to" : "f9" }
     } ]

@@ -1,5 +1,5 @@
 {
-  "format" : "9.4.19",
+  "format" : "9.4.20",
   "id" : "1783A266998C4015",
   "data" : "msgraph.connector.CalendarData",
   "kind" : "CALLABLE_SUB",
@@ -22,7 +22,7 @@
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 },
-        "labelOffset" : { "x" : -43, "y" : 18 },
+        "labelOffset" : { "x" : 21, "y" : 38 },
         "description" : "Reads upcoming events from your calendar.",
         "icon" : "res:/webContent/icons/microsoft.png?small"
       },
@@ -235,7 +235,7 @@
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 288 },
-        "labelOffset" : { "x" : -42, "y" : 20 },
+        "labelOffset" : { "x" : 47, "y" : 40 },
         "description" : "Creates a new meeting in your your calendar.",
         "icon" : "res:/webContent/icons/microsoft.png?small"
       },

@@ -1,5 +1,5 @@
 {
-  "format" : "9.4.19",
+  "format" : "9.4.20",
   "id" : "17F263C6C3570D4D",
   "data" : "msgraph.mail.demo.Mails.MailsData",
   "kind" : "HTML_DIALOG",
@@ -13,7 +13,7 @@
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 },
-        "labelOffset" : { "x" : -14, "y" : 18 }
+        "labelOffset" : { "x" : 14, "y" : 38 }
       },
       "connect" : { "id" : "f2", "to" : "f1" }
     }, {
@@ -31,7 +31,7 @@
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 160 },
-        "labelOffset" : { "x" : -14, "y" : 15 }
+        "labelOffset" : { "x" : 10, "y" : 35 }
       },
       "connect" : { "id" : "f5", "to" : "f4" }
     }, {
