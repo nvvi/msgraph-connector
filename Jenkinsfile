@@ -13,7 +13,7 @@ pipeline {
   }
 
   parameters {
-    string(name: 'engineSource', defaultValue: 'https://jenkins.ivyteam.io/job/core_product/job/master/lastSuccessfulBuild/', description: 'Engine page url')
+    string(name: 'engineSource', defaultValue: 'https://jenkins.ivyteam.io/job/core_product/job/release%252F9.4/lastSuccessfulBuild/', description: 'Engine page url')
     string(name: 'deployTo', defaultValue: 'https://nightly.demo.ivyteam.io/', description: 'Deploy to host')
   }
 
@@ -39,7 +39,7 @@ pipeline {
                 maven cmd: 'clean verify ' +
                       '-Dmaven.test.failure.ignore=true ' +
                       "-DdeployApplicationName=msgraph-connector-${deployApplicationName} " +
-                      "-Dengine.page.url=${params.engineSource} " +
+                      "-Dengine.list.url=${params.engineSource} " +
                       "-Dtest.engine.url=http://${ivyName}:8080 " +
                       "-Dselenide.remote=http://${seleniumName}:4444/wd/hub " +
                       "-Divy.deploy.engine.url=${params.deployTo} " +
