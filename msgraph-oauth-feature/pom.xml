@@ -28,7 +28,7 @@
         <artifactId>project-build-plugin</artifactId>
         <version>9.4.1</version>
         <configuration>
-          <ivyVersion>9.4.0</ivyVersion>
+          <ivyVersion>[9.4.0,]</ivyVersion>
         </configuration>
         <extensions>true</extensions>
       </plugin>

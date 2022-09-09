@@ -39,7 +39,7 @@ pipeline {
                 maven cmd: 'clean verify ' +
                       '-Dmaven.test.failure.ignore=true ' +
                       "-DdeployApplicationName=msgraph-connector-${deployApplicationName} " +
-                      "-Dengine.page.url=${params.engineSource} " +
+                      "-Dengine.list.url=${params.engineSource} " +
                       "-Dtest.engine.url=http://${ivyName}:8080 " +
                       "-Dselenide.remote=http://${seleniumName}:4444/wd/hub " +
                       "-Divy.deploy.engine.url=${params.deployTo} " +

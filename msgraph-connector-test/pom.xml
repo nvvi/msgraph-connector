@@ -72,7 +72,7 @@
         <version>9.4.1</version>
         <extensions>true</extensions>
         <configuration>
-          <ivyVersion>9.4.0</ivyVersion>
+          <ivyVersion>[9.4.0,]</ivyVersion>
         </configuration>
       </plugin>
     </plugins>
