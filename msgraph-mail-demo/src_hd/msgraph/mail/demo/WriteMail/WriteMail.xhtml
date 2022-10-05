@@ -35,7 +35,7 @@
           </h:panelGroup>
 
           <p:outputLabel for="recipients" value="Recipients" />
-          <p:dataTable id="recipients" var="recipient" value="#{data.mail.receivers}" emptyMessage="Please add recipients">
+          <p:dataTable id="recipients" var="recipient" value="#{data.mail.receivers}" emptyMessage="Please add recipients" lazy="false">
             <p:column>
               <h:outputText value="#{recipient}" />
             </p:column>

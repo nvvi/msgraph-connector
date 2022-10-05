@@ -18,7 +18,7 @@
             <p:messages></p:messages>
           </f:facet>
 
-          <p:dataTable id="theTable" widgetVar="theTable" value="#{data.events}" var="event">
+          <p:dataTable id="theTable" widgetVar="theTable" value="#{data.events}" var="event" lazy="false">
 
             <p:column headerText="Subject" id="subject">
               <h4>
