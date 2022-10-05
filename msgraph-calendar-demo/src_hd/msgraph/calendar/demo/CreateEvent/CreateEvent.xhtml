@@ -36,7 +36,7 @@
           </h:panelGroup>
 
           <p:outputLabel for="participants" value="Participants" />
-          <p:dataTable id="participants" var="participant" value="#{data.event.participants}" emptyMessage="Please add participants">
+          <p:dataTable id="participants" var="participant" value="#{data.event.participants}" emptyMessage="Please add participants" lazy="false">
             <p:column>
               <h:outputText value="#{participant}" />
             </p:column>
