@@ -7,12 +7,8 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '30'))
   }
 
-  triggers {
-    cron 'H 6 * * *'
-  }
-
   parameters {
-    string(name: 'engineSource', defaultValue: 'https://jenkins.ivyteam.io/job/core_product/job/release%252F9.4/lastSuccessfulBuild/', description: 'Engine page url')
+    string(name: 'engineSource', defaultValue: 'https://product.ivyteam.io', description: 'Engine page url')
     string(name: 'deployTo', defaultValue: 'https://nightly.demo.ivyteam.io/', description: 'Deploy to host')
   }
 
