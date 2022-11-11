@@ -78,7 +78,7 @@
         "templateParams" : {
           "user-id" : "in.user.getId()"
         },
-        "resultType" : "com.microsoft.graph.CollectionOfEvent"
+        "resultType" : "com.microsoft.graph.MicrosoftGraphEventCollectionResponse"
       },
       "visual" : {
         "at" : { "x" : 456, "y" : 64 },
