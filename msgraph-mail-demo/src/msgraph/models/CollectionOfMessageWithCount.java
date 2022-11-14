@@ -13,13 +13,13 @@
 package msgraph.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.microsoft.graph.CollectionOfMessage;
+import com.microsoft.graph.MicrosoftGraphMessageCollectionResponse;
 
 /**
  * CollectionOfMessage with added count field
  */
 
-public class CollectionOfMessageWithCount extends CollectionOfMessage {
+public class CollectionOfMessageWithCount extends MicrosoftGraphMessageCollectionResponse {
 
   @JsonProperty("@odata.count")
   private Integer _count = null;
