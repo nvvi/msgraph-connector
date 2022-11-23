@@ -26,6 +26,7 @@ import io.swagger.v3.oas.annotations.Hidden;
 @Path("graphMock")
 @PermitAll
 @Hidden
+@SuppressWarnings("unused")
 public class GraphServiceMock
 {
   @GET
@@ -35,7 +36,7 @@ public class GraphServiceMock
   {
     return load("json/me.json");
   }
-  
+
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Path("me/messages")
@@ -43,20 +44,20 @@ public class GraphServiceMock
   {
     return load("json/messages.json");
   }
-  
+
   @GET
   @Path("users/{user-id}/calendar/calendarView")
   @Produces(MediaType.APPLICATION_JSON)
   public Response createEnvelope(
     @PathParam("user-id") String userId,
-    @QueryParam("startDateTime") String start, 
+    @QueryParam("startDateTime") String start,
     @QueryParam("endDateTime") String end)
   {
     return Response.status(200)
       .entity(load("json/calendarView.json"))
       .build();
   }
-  
+
   @POST
   @Path("me/microsoft.graph.sendMail")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -72,7 +73,7 @@ public class GraphServiceMock
     }
     return Response.status(202).build();
   }
-  
+
   @POST
   @Path("me/microsoft.graph.findMeetingTimes")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -83,7 +84,7 @@ public class GraphServiceMock
       .entity(load("json/suggestMeeting.json"))
       .build();
   }
-  
+
   @POST
   @Path("users/{user-id}/calendar/events")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -95,7 +96,7 @@ public class GraphServiceMock
       .header("userId", userId)
       .build();
   }
-  
+
   @GET
   @Path("me/todo/lists")
   @Produces(MediaType.APPLICATION_JSON)
@@ -105,7 +106,7 @@ public class GraphServiceMock
       .entity(load("json/toDoLists.json"))
       .build();
   }
-  
+
   @GET
   @Path("me/todo/lists/{list-id}/tasks")
   @Produces(MediaType.APPLICATION_JSON)
@@ -116,7 +117,7 @@ public class GraphServiceMock
       .header("list-id", id)
       .build();
   }
-  
+
   @POST
   @Path("me/todo/lists/{list-id}/tasks")
   @Produces(MediaType.APPLICATION_JSON)
@@ -128,7 +129,36 @@ public class GraphServiceMock
       .header("id", id)
       .build();
   }
-  
+
+  @GET
+  @Path("me/followedSites")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getFollowedSited()
+  {
+    return Response.ok()
+      .entity(load("json/followedSites.json"))
+      .build();
+  }
+
+  @POST
+  @Path("sites/{site-id}/drive/items/{parent-id}:/{filename}:/content")
+  @Consumes(MediaType.APPLICATION_OCTET_STREAM)
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response uploadSharepoint(
+    @PathParam("site-id") String siteId,
+    @PathParam("parent-id") String parentId,
+    @PathParam("filename") String fileName,
+    byte[] payload
+  )
+  {
+    var item = new MicrosoftGraphDriveItem();
+    item.setName(fileName);
+    item.setContent(IOUtils.toString(payload, StandardCharsets.UTF_8.name()));
+    return Response.ok()
+      .entity(item)
+      .build();
+  }
+
   private static String load(String path)
   {
     try(InputStream is = GraphServiceMock.class.getResourceAsStream(path))
