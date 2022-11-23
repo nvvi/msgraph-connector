@@ -12,6 +12,7 @@
     <module>msgraph-mail-demo</module>
     <module>msgraph-calendar-demo</module>
     <module>msgraph-todo-demo</module>
+    <module>msgraph-sharepoint-demo</module>
     <module>${project.name}-test</module>
    
     <module>${project.name}-product</module>
