@@ -116,5 +116,44 @@
         "icon" : "res:/webContent/icons/microsoft.png"
       },
       "connect" : { "id" : "f9", "to" : "f6" }
+    }, {
+      "id" : "f12",
+      "type" : "RequestStart",
+      "name" : "recentFiles.ivp",
+      "config" : {
+        "callSignature" : "recentFiles",
+        "outLink" : "recentFiles.ivp"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 288 }
+      },
+      "connect" : { "id" : "f14", "to" : "f13" }
+    }, {
+      "id" : "f15",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 480, "y" : 288 }
+      }
+    }, {
+      "id" : "f13",
+      "type" : "SubProcessCall",
+      "name" : "msFiles",
+      "config" : {
+        "processCall" : "msFiles:myRecentFiles()",
+        "output" : {
+          "code" : [
+            "import com.microsoft.graph.MicrosoftGraphDriveItem;",
+            "",
+            "for(MicrosoftGraphDriveItem item : result.items){",
+            "  ivy.log.info(\"recent item: \"+item.name);",
+            "}"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 288, "y" : 288 },
+        "icon" : "res:/webContent/icons/microsoft.png"
+      },
+      "connect" : { "id" : "f16", "to" : "f15" }
     } ]
 }

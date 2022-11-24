@@ -159,6 +159,16 @@ public class GraphServiceMock
       .build();
   }
 
+  @GET
+  @Path("me/drive/recent")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getRecentFiles()
+  {
+    return Response.ok()
+      .entity(load("json/recentFiles.json"))
+      .build();
+  }
+
   private static String load(String path)
   {
     try(InputStream is = GraphServiceMock.class.getResourceAsStream(path))

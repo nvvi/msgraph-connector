@@ -20,7 +20,8 @@
             "out.siteId" : "param.siteId",
             "out.upload" : "param.#file"
           }
-        }
+        },
+        "tags" : "connector"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 },
@@ -136,12 +137,59 @@
           "map" : {
             "out.upload" : "param.#file"
           }
-        }
+        },
+        "tags" : "connector"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 168 },
         "icon" : "res:/webContent/icons/microsoft.png?small"
       },
       "connect" : { "id" : "f11", "to" : "f3" }
+    }, {
+      "id" : "f12",
+      "type" : "CallSubStart",
+      "name" : "myRecentFiles()",
+      "config" : {
+        "callSignature" : "myRecentFiles",
+        "result" : {
+          "params" : [
+            { "name" : "items", "type" : "java.util.List<com.microsoft.graph.MicrosoftGraphDriveItem>", "desc" : "recently used items" }
+          ],
+          "map" : {
+            "result.items" : "in.items"
+          }
+        },
+        "tags" : "connector"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 280 },
+        "icon" : "res:/webContent/icons/microsoft.png?small"
+      },
+      "connect" : { "id" : "f14", "to" : "f13" }
+    }, {
+      "id" : "f13",
+      "type" : "RestClientCall",
+      "name" : "drive/recent",
+      "config" : {
+        "path" : "/me/drive/recent",
+        "clientId" : "007036dc-72d1-429f-88a7-ba5d5cf5ae58",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.items" : "result.value"
+        },
+        "resultType" : "com.microsoft.graph.MicrosoftGraphDriveItemCollectionResponse"
+      },
+      "visual" : {
+        "at" : { "x" : 296, "y" : 280 },
+        "icon" : "res:/webContent/icons/microsoft.png"
+      },
+      "connect" : { "id" : "f16", "to" : "f15" }
+    }, {
+      "id" : "f15",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 472, "y" : 280 }
+      }
     } ]
 }
