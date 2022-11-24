@@ -11,7 +11,15 @@ import com.microsoft.graph.MicrosoftGraphChatMessage;
 
 public class TeamsMessagesDataModel extends LazyDataModel<MicrosoftGraphChatMessage> {
 
-  public String chatId = "mock";
+  private String chatId = "mock";
+
+  public String getChatId() {
+    return chatId;
+  }
+
+  public void setChatId(String chatId) {
+    this.chatId = chatId;
+  }
 
   @Override
   public String getRowKey(MicrosoftGraphChatMessage msg) {
@@ -26,7 +34,7 @@ public class TeamsMessagesDataModel extends LazyDataModel<MicrosoftGraphChatMess
   @Override
   public List<MicrosoftGraphChatMessage> load(int first, int pageSize,
       Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-    var messages = new MsGraphTeamsRest(chatId).getMessages(first, pageSize);
+    var messages = new MsGraphTeamsChat(chatId).getMessages(first, pageSize);
     if (messages.getCount() == null) {
       setRowCount(messages.getValue().size());
     } else {
