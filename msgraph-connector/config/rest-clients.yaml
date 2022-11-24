@@ -8,7 +8,7 @@ RestClients:
     - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
     - com.microsoft.auth.OAuth2Feature
     Properties:
-      AUTH.scope: "user.read Calendars.ReadWrite mail.readWrite mail.send Tasks.ReadWrite offline_access"
+      AUTH.scope: ${ivy.var.microsoft-connector.permissions}
       AUTH.baseUri: https://login.microsoftonline.com/${ivy.var.microsoft-connector.tenantId}/oauth2/v2.0
       jersey.client.connectorProvider: org.glassfish.jersey.client.HttpUrlConnectorProvider
       JSON.Serialization.PROPERTY_INCLUSION: NON_NULL
