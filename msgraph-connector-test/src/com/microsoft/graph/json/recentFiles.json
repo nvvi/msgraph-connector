@@ -1,0 +1,146 @@
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#Collection(driveItem)",
+    "value": [
+        {
+            "@odata.type": "#microsoft.graph.driveItem",
+            "createdDateTime": "2018-01-08T11:40:46Z",
+            "id": "444444",
+            "lastModifiedDateTime": "2022-11-15T11:42:47Z",
+            "name": "greatTeam_Sprint_Performance.xlsx",
+            "webUrl": "https://acme.sharepoint.com/sites/greatTeam/_layouts/15/Doc.aspx?sourcedoc=%NOTMYID%7D&file=greatTeam_Sprint_Performance.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1",
+            "size": 53160,
+            "createdBy": {
+                "user": {
+                    "email": "c.s@acme.com",
+                    "displayName": "C S"
+                }
+            },
+            "lastModifiedBy": {
+                "user": {
+                    "email": "r.w@acme.com",
+                    "displayName": "R W"
+                }
+            },
+            "file": {
+                "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            },
+            "fileSystemInfo": {
+                "createdDateTime": "2018-01-08T11:40:46Z",
+                "lastModifiedDateTime": "2022-11-15T11:42:47Z"
+            },
+            "remoteItem": {
+                "createdDateTime": "2018-01-08T11:40:46Z",
+                "id": "444444",
+                "lastModifiedDateTime": "2022-11-15T11:42:47Z",
+                "name": "greatTeam_Sprint_Performance.xlsx",
+                "size": 53160,
+                "webDavUrl": "https://acme.sharepoint.com/sites/greatTeam/Freigegebene%20Dokumente/Scrum/greatTeam_Sprint_Performance.xlsx",
+                "webUrl": "https://acme.sharepoint.com/sites/greatTeam/_layouts/15/Doc.aspx?sourcedoc=%NOTMYID%7D&file=greatTeam_Sprint_Performance.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1",
+                "createdBy": {
+                    "user": {
+                        "email": "c.s@acme.com",
+                        "displayName": "C S"
+                    }
+                },
+                "file": {
+                    "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                },
+                "fileSystemInfo": {
+                    "createdDateTime": "2018-01-08T11:40:46Z",
+                    "lastModifiedDateTime": "2022-11-15T11:42:47Z"
+                },
+                "lastModifiedBy": {
+                    "user": {
+                        "email": "r.w@acme.com",
+                        "displayName": "R W"
+                    }
+                },
+                "parentReference": {
+                    "driveType": "documentLibrary",
+                    "driveId": "LONG-DRIVE_ID",
+                    "id": "343243243242"
+                },
+                "shared": {
+                    "scope": "users"
+                },
+                "sharepointIds": {
+                    "listId": "33333333333",
+                    "listItemId": "7",
+                    "listItemUniqueId": "dfdsa3432",
+                    "siteId": "9999999999",
+                    "siteUrl": "https://acme.sharepoint.com/sites/greatTeam",
+                    "webId": "3332343243"
+                }
+            }
+        },
+        {
+            "@odata.type": "#microsoft.graph.driveItem",
+            "createdDateTime": "2022-11-14T10:51:28Z",
+            "id": "5555555",
+            "lastModifiedDateTime": "2022-11-15T08:20:37Z",
+            "name": "resources_sprint_2.xlsx",
+            "webUrl": "https://acme.sharepoint.com/sites/greatTeam/_layouts/15/Doc.aspx?sourcedoc=%IDIFIED%7D&file=resources_sprint_2.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1",
+            "size": 21451,
+            "createdBy": {
+                "user": {
+                    "email": "r.w@acme.com",
+                    "displayName": "R W"
+                }
+            },
+            "lastModifiedBy": {
+                "user": {
+                    "email": "r.w@acme.com",
+                    "displayName": "R W"
+                }
+            },
+            "file": {
+                "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            },
+            "fileSystemInfo": {
+                "createdDateTime": "2022-11-14T10:51:28Z",
+                "lastModifiedDateTime": "2022-11-15T08:20:37Z"
+            },
+            "remoteItem": {
+                "createdDateTime": "2022-11-14T10:51:28Z",
+                "id": "5555555",
+                "lastModifiedDateTime": "2022-11-15T08:20:37Z",
+                "name": "resources_sprint_2.xlsx",
+                "size": 21451,
+                "webDavUrl": "https://acme.sharepoint.com/sites/greatTeam/Freigegebene%20Dokumente/Scrum/Gemsstock/resources_sprint_2.xlsx",
+                "webUrl": "https://acme.sharepoint.com/sites/greatTeam/_layouts/15/Doc.aspx?sourcedoc=%IDIFIED%7D&file=resources_sprint_2.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1",
+                "createdBy": {
+                    "user": {
+                        "email": "r.w@acme.com",
+                        "displayName": "R W"
+                    }
+                },
+                "file": {
+                    "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                },
+                "fileSystemInfo": {
+                    "createdDateTime": "2022-11-14T10:51:28Z",
+                    "lastModifiedDateTime": "2022-11-15T08:20:37Z"
+                },
+                "lastModifiedBy": {
+                    "user": {
+                        "email": "r.w@acme.com",
+                        "displayName": "R W"
+                    }
+                },
+                "parentReference": {
+                    "driveType": "documentLibrary",
+                    "driveId": "LONG-DRIVE_ID",
+                    "id": "99999"
+                },
+                "sharepointIds": {
+                    "listId": "33333333333",
+                    "listItemId": "376",
+                    "listItemUniqueId": "45645645654",
+                    "siteId": "9999999999",
+                    "siteUrl": "https://acme.sharepoint.com/sites/greatTeam",
+                    "webId": "3332343243"
+                }
+            }
+        }
+    ]
+}

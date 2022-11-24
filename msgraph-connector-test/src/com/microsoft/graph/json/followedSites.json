@@ -1,0 +1,34 @@
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#sites",
+    "value": [
+        {
+            "description": "Zug",
+            "id": "acme.sharepoint.com,4ae23246-72b0-42a1-a92e-6a8d551bd1f8,b606dc33-86f6-49b3-a4a2-2d16faca9e08",
+            "webUrl": "https://acme.sharepoint.com/sites/team",
+            "displayName": "Acme Development",
+            "sharepointIds": {
+                "siteId": "4ae23246-72b0-42a1-a92e-6a8d551bd1f8",
+                "webId": "b606dc33-86f6-49b3-a4a2-2d16faca9e08"
+            },
+            "siteCollection": {
+                "hostname": "acme.sharepoint.com"
+            }
+        },
+        {
+            "description": "Hidden Area",
+            "id": "acme.sharepoint.com,94eaa488-ed7b-4cf9-a7c3-8008d2f81d99,7e39fc93-9329-4221-aa23-18a34a0ce273",
+            "lastModifiedDateTime": "2019-06-22T12:25:49Z",
+            "webUrl": "https://acme.sharepoint.com/sites/ivyTeam-Personelles",
+            "displayName": "Acme Secrets",
+            "sharepointIds": {
+                "listItemId": "1",
+                "siteId": "94eaa488-ed7b-4cf9-a7c3-8008d2f81d99",
+                "siteUrl": "https://acme.sharepoint.com/sites/team-secrets",
+                "webId": "7e39fc93-9329-4221-aa23-18a34a9ce273"
+            },
+            "siteCollection": {
+                "hostname": "acme.sharepoint.com"
+            }
+        }
+    ]
+}
