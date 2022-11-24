@@ -9,7 +9,7 @@ import org.primefaces.model.SortMeta;
 
 import com.microsoft.graph.MicrosoftGraphMessage;
 
-import msgraph.wrappers.MsGraphRest;
+import msgraph.wrappers.MsGraphMailRest;
 
 public class MailDataModel extends LazyDataModel<MicrosoftGraphMessage> {
 
@@ -26,9 +26,7 @@ public class MailDataModel extends LazyDataModel<MicrosoftGraphMessage> {
   @Override
   public List<MicrosoftGraphMessage> load(int first, int pageSize,
       Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-    var restClient = new MsGraphRest().first(first).pageSize(pageSize);
-    var messages = restClient.getMessages();
-
+    var messages = new MsGraphMailRest().getMessages(first, pageSize);
     if (messages.getCount() == null) {
       setRowCount(messages.getValue().size());
     } else {
