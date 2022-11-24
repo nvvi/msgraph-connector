@@ -21,4 +21,4 @@ Variables:
     # permissions to request access to.
     # you may exclude or add some, as your azure administrator allows or restricts them.
     # for sharepoint-demos, the following must be added: Sites.Read.All Files.ReadWrite
-    permissions: "user.read Calendars.ReadWrite mail.readWrite mail.send Tasks.ReadWrite offline_access"
+    permissions: "user.read Calendars.ReadWrite mail.readWrite mail.send Tasks.ReadWrite Chat.Read offline_access"
