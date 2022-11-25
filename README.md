@@ -9,6 +9,12 @@ Read our [documentation](msgraph-connector-product/README.md).
 The Microsoft Graph universe is wide, if you use this connector and its demos as starting point
 for your custom graph based solution, you may appreciate the following developer help.
 
+### Explore
+
+Microsoft's [Graph-Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) let's you fire requests against the Graph APIs with a simple convenient UI. This is a good starting point, to find relevant resources for your custom Graph API use-case. Here you can conveniently grant permissions to simulate a call, without actually configuring your Azure App.
+
+A selection of frequent API calls can be gleaned from Microsoft's [API-Reference](https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0).
+
 ### API Slicing
 
 The rest-client definition within the msgraph-connector project limits the OpenAPI
