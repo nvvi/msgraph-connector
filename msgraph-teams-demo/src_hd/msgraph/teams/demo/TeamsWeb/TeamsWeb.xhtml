@@ -27,7 +27,8 @@
             paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="10,20,50" lazy="true">
           
             <p:column headerText="Sender" id="sender" style="width: 30%;">
-              <p:outputLabel value="#{msg.from.user.displayName}"/>
+              <p:outputLabel value="#{msg.from.user.displayName}"/><br/>
+              <p:outputLabel value="#{msg.lastModifiedDateTime}"/>
             </p:column>
 
             <p:column headerText="Content" id="subject">
