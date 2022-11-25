@@ -1,0 +1,57 @@
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#chats",
+    "@odata.count": 20,
+    "@odata.nextLink": "https://graph.microsoft.com/v1.0/me/chats?$skiptoken=1.32432",
+    "value": [
+        {
+            "id": "19:meeting_4324324324@thread.v2",
+            "topic": "Axon Ivy Innovation Road Trip - Station 1 – Get an overview of Axon Ivy 10",
+            "createdDateTime": "2022-11-09T13:01:22.714Z",
+            "lastUpdatedDateTime": "2022-11-24T12:10:29.208Z",
+            "chatType": "meeting",
+            "webUrl": "https://teams.microsoft.com/l/chat/19%3Ameeting_4324324324%40thread.v2/0?tenantId=3433333777-ab193739b22f",
+            "tenantId": "3433333777-ab193739b22f",
+            "viewpoint": {
+                "isHidden": false,
+                "lastMessageReadDateTime": "2022-11-24T11:18:03.072Z"
+            },
+            "onlineMeetingInfo": {
+                "calendarEventId": null,
+                "joinWebUrl": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_4324324324%40thread.v2/0?context=%7b%22Tid%22%3a%223433333777-ab193739b22f%22%2c%22Oid%22%3a%2211111111111111111%22%7d",
+                "organizer": {
+                    "id": "11111111111111111",
+                    "displayName": null,
+                    "userIdentityType": "aadUser"
+                }
+            }
+        },
+        {
+            "id": "19:4324324324324444-dce5-44a0-b2b7-a70a3d65ce25@unq.gbl.spaces",
+            "topic": null,
+            "createdDateTime": "2021-11-19T15:17:46.819Z",
+            "lastUpdatedDateTime": "2021-11-19T15:28:01.127Z",
+            "chatType": "oneOnOne",
+            "webUrl": "https://teams.microsoft.com/l/chat/19%3A4324324324324444-dce5-44a0-b2b7-a70a3d65ce25%40unq.gbl.spaces/0?tenantId=3433333777-ab193739b22f",
+            "tenantId": "3433333777-ab193739b22f",
+            "onlineMeetingInfo": null,
+            "viewpoint": {
+                "isHidden": false,
+                "lastMessageReadDateTime": "2022-11-24T07:16:49.676Z"
+            }
+        },
+        {
+            "id": "19:d317ba3f313146a589811dcb4bb946e7@thread.v2",
+            "topic": "acmeteam-dev",
+            "createdDateTime": "2020-03-17T14:30:16.998Z",
+            "lastUpdatedDateTime": "2022-10-19T10:13:06.104Z",
+            "chatType": "group",
+            "webUrl": "https://teams.microsoft.com/l/chat/19%3Ad317ba3f313146a589811dcb4bb946e7%40thread.v2/0?tenantId=3433333777-ab193739b22f",
+            "tenantId": "3433333777-ab193739b22f",
+            "onlineMeetingInfo": null,
+            "viewpoint": {
+                "isHidden": false,
+                "lastMessageReadDateTime": "2022-11-22T17:17:21.083Z"
+            }
+        }
+    ]
+}

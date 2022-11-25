@@ -169,6 +169,26 @@ public class GraphServiceMock
       .build();
   }
 
+  @GET
+  @Path("me/chats")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getMyChats()
+  {
+    return Response.ok()
+      .entity(load("json/chats.json"))
+      .build();
+  }
+
+  @GET
+  @Path("me/chats/{chat-id}/messages")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response getChatMessages(@PathParam("chat-id") String chatId)
+  {
+    return Response.ok()
+      .entity(load("json/chatMessages.json"))
+      .build();
+  }
+
   private static String load(String path)
   {
     try(InputStream is = GraphServiceMock.class.getResourceAsStream(path))

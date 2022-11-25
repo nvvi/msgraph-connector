@@ -1,0 +1,155 @@
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('777777777-a7f7b81e9bc1')/chats('19%3A111111111111%40thread.v2')/messages",
+    "@odata.count": 20,
+    "@odata.nextLink": "https://graph.microsoft.com/v1.0/me/chats/19:111111111111@thread.v2/messages?$skiptoken=432432432eXBlPVN5bmNTdGF0ZSMjQ29udGludWF0aW9uVG9rZW49M2UyZDAwMDAwMDMxMzkzYTY0MzMzMTM3NjI2MTMzNjYzMzMxMzMzMTM0MzY2MTM1MzgzOTM4MzEzMTY0NjM2MjM0NjI2MjM5MzQzNjY1Mzc0MDc0Njg3MjY1NjE2NDJlNzYzMjAxMzkwMmFkZTQ4MzAxMDAwMDNiMjE1OGEwODQwMTAwMDA%3d",
+    "value": [
+        {
+            "id": "000000000000",
+            "replyToId": null,
+            "etag": "000000000000",
+            "messageType": "message",
+            "createdDateTime": "2022-10-17T13:56:58.277Z",
+            "lastModifiedDateTime": "2022-10-17T13:56:58.277Z",
+            "lastEditedDateTime": null,
+            "deletedDateTime": null,
+            "subject": null,
+            "summary": null,
+            "chatId": "19:111111111111@thread.v2",
+            "importance": "normal",
+            "locale": "en-us",
+            "webUrl": null,
+            "channelIdentity": null,
+            "policyViolation": null,
+            "eventDetail": null,
+            "from": {
+                "application": null,
+                "device": null,
+                "user": {
+                    "id": "456",
+                    "displayName": "LL",
+                    "userIdentityType": "aadUser",
+                    "tenantId": "123"
+                }
+            },
+            "body": {
+                "contentType": "html",
+                "content": "<attachment id=\"0876\"></attachment><p>core ist auf 10.0.1, meinst du alle externen?</p>"
+            },
+            "attachments": [
+                {
+                    "id": "0876",
+                    "contentType": "messageReference",
+                    "contentUrl": null,
+                    "content": "{\"messageId\":\"0876\",\"messagePreview\":\"LL raist Du noch auf 10.0.1?\",\"messageSender\":{\"application\":null,\"device\":null,\"user\":{\"userIdentityType\":\"aadUser\",\"id\":\"e99f1c9c-cd16-43ad-b92f-0fc2496fa89e\",\"displayName\":\"AS\"}}}",
+                    "name": null,
+                    "thumbnailUrl": null
+                }
+            ],
+            "mentions": [],
+            "reactions": []
+        },
+        {
+            "id": "1666014996955",
+            "replyToId": null,
+            "etag": "1666014996955",
+            "messageType": "message",
+            "createdDateTime": "2022-10-17T13:56:36.955Z",
+            "lastModifiedDateTime": "2022-10-17T13:56:36.955Z",
+            "lastEditedDateTime": null,
+            "deletedDateTime": null,
+            "subject": null,
+            "summary": null,
+            "chatId": "19:111111111111@thread.v2",
+            "importance": "normal",
+            "locale": "en-us",
+            "webUrl": null,
+            "channelIdentity": null,
+            "policyViolation": null,
+            "eventDetail": null,
+            "from": {
+                "application": null,
+                "device": null,
+                "user": {
+                    "id": "456",
+                    "displayName": "LL",
+                    "userIdentityType": "aadUser",
+                    "tenantId": "123"
+                }
+            },
+            "body": {
+                "contentType": "html",
+                "content": "<p>akutell werden bei den performance tests folgende builds getestet:</p><p><img src=\"https://graph.microsoft.com/v1.0/chats/19:111111111111@thread.v2/messages/1666014996955/hostedContents/oooooooooo/$value\" alt=\"Bild\" width=\"571\" height=\"52\" itemid=\"0-weu-d6-fab11c1a850de1c50a3b89c406bfa3e3\" style=\"vertical-align:bottom\">welche sollen wir in zukunft noch testen?</p><ol style=\"list-style:decimal\"><li><p>alle + 10.0.0, 10.0.x, 10.0.n<br></p></li><li><p>nur noch 8er, 10ner, devs (7ner, le raus)</p></li><li><p>etwas anderes <span title=\"Grinsen\" type=\"(smile)\" class=\"animated-emoticon-20-smile\"><img itemscope=\"\" itemtype=\"http://schema.skype.com/Emoji\" itemid=\"smile\" src=\"https://statics.teams.cdn.office.net/evergreen-assets/personal-expressions/v2/assets/emoticons/smile/default/20_f.png\" title=\"Grinsen\" alt=\"🙂\" style=\"width:20px; height:20px\"></span></p></li></ol>"
+            },
+            "attachments": [],
+            "mentions": [],
+            "reactions": []
+        },
+        {
+            "id": "0876",
+            "replyToId": null,
+            "etag": "0876",
+            "messageType": "message",
+            "createdDateTime": "2022-10-17T13:55:37.791Z",
+            "lastModifiedDateTime": "2022-10-17T13:55:37.791Z",
+            "lastEditedDateTime": null,
+            "deletedDateTime": null,
+            "subject": null,
+            "summary": null,
+            "chatId": "19:111111111111@thread.v2",
+            "importance": "normal",
+            "locale": "en-us",
+            "webUrl": null,
+            "channelIdentity": null,
+            "policyViolation": null,
+            "eventDetail": null,
+            "from": {
+                "application": null,
+                "device": null,
+                "user": {
+                    "id": "e99f1c9c-cd16-43ad-b92f-0fc2496fa89e",
+                    "displayName": "AS",
+                    "userIdentityType": "aadUser",
+                    "tenantId": "123"
+                }
+            },
+            "body": {
+                "contentType": "html",
+                "content": "<p><at id=\"0\">Lukas</at> <at id=\"1\">Lieb</at>&nbsp;raist Du noch auf 10.0.1?</p>"
+            },
+            "attachments": [],
+            "mentions": [
+                {
+                    "id": 0,
+                    "mentionText": "Lukas",
+                    "mentioned": {
+                        "application": null,
+                        "device": null,
+                        "conversation": null,
+                        "tag": null,
+                        "user": {
+                            "id": "456",
+                            "displayName": "Lukas",
+                            "userIdentityType": "aadUser"
+                        }
+                    }
+                },
+                {
+                    "id": 1,
+                    "mentionText": "Lieb",
+                    "mentioned": {
+                        "application": null,
+                        "device": null,
+                        "conversation": null,
+                        "tag": null,
+                        "user": {
+                            "id": "456",
+                            "displayName": "Lieb",
+                            "userIdentityType": "aadUser"
+                        }
+                    }
+                }
+            ],
+            "reactions": []
+        }
+    ]
+}
