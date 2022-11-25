@@ -12,8 +12,8 @@
       <h:form id="form">
         <p:messages />
         
-        <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" 
-          columnClasses="ui-g-12 ui-md-3 ui-lg-2, ui-g-12 ui-md-9 ui-lg-4, ui-g-12 ui-md-3 ui-lg-2, ui-g-12 ui-md-9 ui-lg-4">
+        <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" 
+          columnClasses="ui-g-12">
 
           <p:selectOneMenu value="#{teamsBean.tableModel.chatId}">
               <f:selectItems value="#{teamsBean.chats}" var="chat" itemValue="#{chat.id}" 
@@ -26,12 +26,8 @@
             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
             paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="10,20,50" lazy="true">
           
-            <p:column headerText="Sender" id="sender" style="width: 30%;">
-              <p:outputLabel value="#{msg.from.user.displayName}"/><br/>
-              <p:outputLabel value="#{msg.lastModifiedDateTime}"/>
-            </p:column>
-
-            <p:column headerText="Content" id="subject">
+            <p:column headerText="Messages" id="sender" style="width: 30%;">
+              <p:outputLabel value="#{msg.from.user.displayName}"/> <p:outputLabel value=" #{msg.lastModifiedDateTime}"/><br/>
               <p:outputLabel escape="false" value="#{msg.body.content}"  />
             </p:column>
             
