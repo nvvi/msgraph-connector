@@ -35,9 +35,9 @@ import ch.ivyteam.ivy.rest.client.oauth2.uri.OAuth2UriProperty;
 public class OAuth2Feature implements Feature{
 
   public static interface Default {
-    String APP_SCOPE = "https://graph.microsoft.com/.default";
     String AUTH_URI = "https://login.microsoftonline.com/common/oauth2/v2.0";
-    String SCOPE = "user.read";
+    String APP_SCOPE = "https://graph.microsoft.com/.default";
+    String USER_SCOPE = "user.read";
   }
 
   public static interface Property {
@@ -100,25 +100,25 @@ public class OAuth2Feature implements Feature{
     if (authCode.isPresent()) {
       // use user permissions
       form.param("grant_type", "authorization_code");
-      form.param("scope", getScope(config));
+      form.param("scope", getPersonalScope(config));
       form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
       form.param("code", authCode.get());
     }
     else  if (isUserPassAuth(config)) {
       // weak security: app acts as personal user!
       form.param("grant_type", "password");
-      form.param("scope", getScope(config));
+      form.param("scope", getPersonalScope(config));
       form.param("username", config.readMandatory(Property.USER));
       form.param("password", config.readMandatory(Property.PASS));
     } else if (isAppAuth(config)) {
       // use app permission
       form.param("grant_type", "client_credentials");
-      form.param("scope", Default.APP_SCOPE);
+      form.param("scope", config.read(Property.SCOPE).orElse(Default.APP_SCOPE));
     }
 
     if (refreshToken.isPresent())
     {
-      form.param("scope", getScope(config));
+      form.param("scope", getPersonalScope(config));
       form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
       form.param("refresh_token", refreshToken.get());
       form.param("grant_type", "refresh_token");
@@ -136,14 +136,14 @@ public class OAuth2Feature implements Feature{
   private static URI createMsAuthCodeUri(FeatureConfig config, OAuth2UriProperty uriFactory) {
     return UriBuilder.fromUri(uriFactory.getUri("authorize"))
       .queryParam("client_id", config.readMandatory(Property.APP_ID))
-      .queryParam("scope", getScope(config))
+      .queryParam("scope", getPersonalScope(config))
       .queryParam("redirect_uri", OAuth2CallbackUriBuilder.create().toUri())
       .queryParam("response_type", "code")
       .queryParam("response_mode", "query")
       .build();
   }
 
-  private static String getScope(FeatureConfig config) {
-    return config.read(Property.SCOPE).orElse(Default.SCOPE);
+  private static String getPersonalScope(FeatureConfig config) {
+    return config.read(Property.SCOPE).orElse(Default.USER_SCOPE);
   }
 }

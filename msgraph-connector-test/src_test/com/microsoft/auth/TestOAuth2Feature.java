@@ -28,6 +28,27 @@ public class TestOAuth2Feature {
       .isEqualTo("authorization_code");
     assertThat(payload.keySet()).containsOnly(
       "client_id", "client_secret", "scope", "code", "redirect_uri", "grant_type");
+    assertThat(payload.getFirst("scope"))
+      .startsWith(OAuth2Feature.Default.USER_SCOPE);
+  }
+
+  @Test
+  void payload_userDelegate_customScope() {
+    String userScope = "Chat.ReadWrite";
+    Map<String, Object> props = Map.of(
+      "AUTH.appId", "1234",
+      "AUTH.secretKey", "5678",
+      "AUTH.scope", userScope
+    );
+    var config = toConfig(props);
+    var payload = OAuth2Feature.createTokenPayload(config, Optional.of("theToken"), Optional.empty()).asMap();
+
+    assertThat(payload.getFirst("grant_type"))
+      .isEqualTo("authorization_code");
+    assertThat(payload.keySet()).containsOnly(
+      "client_id", "client_secret", "scope", "code", "redirect_uri", "grant_type");
+    assertThat(payload.getFirst("scope"))
+      .startsWith(userScope);
   }
 
   @Test
@@ -45,6 +66,25 @@ public class TestOAuth2Feature {
       .startsWith(OAuth2Feature.Default.APP_SCOPE);
   }
 
+  /**
+   * ISSUE-62 custom scopes for third-party apps, where azure AD is the IDP.
+   */
+  @Test
+  void payload_appAuth_thirdPartyScope() {
+    String customScope = "api://acme-stammdaten/.default";
+    Map<String, Object> props = Map.of(
+      "AUTH.appId", "1234",
+      "AUTH.secretKey", "5678",
+      "AUTH.useAppPermissions", Boolean.TRUE.toString(),
+      "AUTH.scope", customScope);
+    var payload = toPayload(props);
+    assertThat(payload.getFirst("grant_type"))
+      .isEqualTo("client_credentials");
+    assertThat(payload.getFirst("scope"))
+      .as("scope must be configurable for third-party apps")
+      .startsWith(customScope);
+  }
+
   @Test
   void payload_userPass() {
     Map<String, Object> props = Map.of(
@@ -58,6 +98,8 @@ public class TestOAuth2Feature {
       .isEqualTo("password");
     assertThat(payload.keySet()).containsOnly(
       "client_id", "client_secret", "scope", "username", "password", "grant_type");
+    assertThat(payload.getFirst("scope"))
+      .startsWith(OAuth2Feature.Default.USER_SCOPE);
   }
 
   private static MultivaluedMap<String, String> toPayload(Map<String, Object> props) {
