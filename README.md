@@ -2,7 +2,13 @@
 
 [![CI Build](https://github.com/axonivy-market/msgraph-connector/actions/workflows/ci.yml/badge.svg)](https://github.com/axonivy-market/msgraph-connector/actions/workflows/ci.yml)
 
-Read our [documentation](msgraph-connector-product/README.md).
+Read our docs:
+
+- Azure App [Setup](msgraph-connector-product/setup.md)
+- Graph [Connector](msgraph-connector-product/products/msgraph-connector/README.md)
+- Graph [Calendar](msgraph-connector-product/products/msgraph-calendar/README.md)
+- Graph [Mail](msgraph-connector-product/products/msgraph-mail/README.md)
+- Graph [ToDo](msgraph-connector-product/products/msgraph-todo/README.md)
 
 ## Developer Guidelines
 
