@@ -8,3 +8,10 @@ Variables:
     # Secret key from your applications "certificates & secrets"
     # [password]
     secretKey: ""
+
+  teams-notification:
+    # technical user that sends ivy-notifications
+    username: ""
+    # secret of the technical user
+    # [password]
+    userpass: "${encrypt:somePass}"

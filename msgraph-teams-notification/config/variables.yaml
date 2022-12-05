@@ -1,9 +1,10 @@
 # == Variables ==
-# 
-# You can define here your project Variables.
-# If you want to define/override a Variable for a specific Environment, 
-# add an additional ‘variables.yaml’ file in a subdirectory in the ‘Config’ folder: 
-# '<project>/Config/_<environment>/variables.yaml
-#
 Variables:
-#  myVariable: value
+  teams-notification:
+    enabled: true
+    permissions: "Chat.Write"
+    # technical user that sends ivy-notifications
+    username: ""
+    # secret of the technical user
+    # [password]
+    userpass: "${encrypt:somePass}"
