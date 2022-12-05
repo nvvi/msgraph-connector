@@ -31,6 +31,7 @@ import ch.ivyteam.ivy.workflow.IWorkflowManager;
 public class TeamsNotifier extends NewTaskAssignmentListener {
 
   private WebTarget client;
+  private MicrosoftGraphUser me;
 
   public TeamsNotifier() {
     super(IWorkflowManager.instance());
@@ -51,11 +52,7 @@ public class TeamsNotifier extends NewTaskAssignmentListener {
 
   private void notify(String azureUserId, ITask newTask) {
     try {
-      MicrosoftGraphUser me = client.path("/me")
-        .request().get(MicrosoftGraphUser.class);
-
-      var chat = createChat(me.getId(), azureUserId);
-
+      var chat = createChat(getMe().getId(), azureUserId);
       var msg = new MicrosoftGraphChatMessage();
       var body = new MicrosoftGraphItemBody();
       msg.setBody(body);
@@ -65,11 +62,20 @@ public class TeamsNotifier extends NewTaskAssignmentListener {
       Ivy.log().info("sending "+msg);
       client.path("/chats/{chat-id}/messages")
         .resolveTemplate("chat-id", chat.getId())
-        .request()
+        .request(MediaType.APPLICATION_JSON)
         .post(Entity.entity(msg, MediaType.APPLICATION_JSON));
     } catch (Exception ex) {
       Ivy.log().error("Failed to notify user "+azureUserId+" on new task "+newTask, ex);
     }
+  }
+
+  private MicrosoftGraphUser getMe() {
+    if (me == null) {
+      me = client.path("/me")
+        .request(MediaType.APPLICATION_JSON)
+        .get(MicrosoftGraphUser.class);
+    }
+    return me;
   }
 
   private static String toHtml(ITask newTask) {

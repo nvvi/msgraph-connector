@@ -92,5 +92,63 @@
         "icon" : "res:/webContent/icons/microsoft.png"
       },
       "connect" : { "id" : "f7", "to" : "f6" }
+    }, {
+      "id" : "f12",
+      "type" : "RequestStart",
+      "name" : "teamNotification.ivp",
+      "config" : {
+        "callSignature" : "teamNotification",
+        "outLink" : "teamNotification.ivp"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 288 }
+      },
+      "connect" : { "id" : "f18", "to" : "f17" }
+    }, {
+      "id" : "f13",
+      "type" : "TaskSwitchEvent",
+      "config" : {
+        "task" : {
+          "name" : "Teams Demo Task :-)",
+          "description" : "hi from AxonIvy"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 352, "y" : 288 }
+      },
+      "connect" : { "id" : "f16", "to" : "f15" }
+    }, {
+      "id" : "f15",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 544, "y" : 288 }
+      }
+    }, {
+      "id" : "f17",
+      "type" : "Script",
+      "name" : [
+        "simulate",
+        "AAD user"
+      ],
+      "config" : {
+        "output" : {
+          "code" : "msgraph.teams.LocalTestUserWithAADid.assign(\"Megan\", \"2dbe0df3-26eb-4685-a62d-1a0c165efa6a\");"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 288 }
+      },
+      "connect" : { "id" : "f14", "to" : "f13" }
+    }, {
+      "id" : "f19",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "for demo purposes: link your local test-users to ADD users manually!",
+        "on the real ivy-engine, this is done automatically by AzureAD security system"
+      ],
+      "visual" : {
+        "at" : { "x" : 264, "y" : 384 }
+      },
+      "connect" : { "id" : "f20", "to" : "f17" }
     } ]
 }
