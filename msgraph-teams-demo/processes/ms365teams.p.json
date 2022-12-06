@@ -100,7 +100,8 @@
         "callSignature" : "teamsNotification",
         "outLink" : "teamsNotification.ivp",
         "startDescription" : "Demonstrates how MS-Teams chat notifications can be used to inform users on new Tasks",
-        "startName" : "MS Teams Task Notification"
+        "startName" : "MS Teams Task Notification",
+        "tags" : "demo"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 288 }

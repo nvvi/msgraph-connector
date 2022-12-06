@@ -1,6 +1,6 @@
 ## Setup
 
-1. Register an application on Azure as desribed in the Microsoft's Java Tutorial https://docs.microsoft.com/en-us/graph/tutorials/java?tutorial-step=2
+1. Register an application on Azure as described in the Microsoft's Java Tutorial https://docs.microsoft.com/en-us/graph/tutorials/java?tutorial-step=2
 1. Navigate to `Overview` in the menu and copy the 'Application (client) ID' into Rest Client Definition property `AUTH.appId`.
 1. Navigate to `Authentication` in the Azure App menu.
 	1. Add a `Redirect URI` in the `Web` Section.
