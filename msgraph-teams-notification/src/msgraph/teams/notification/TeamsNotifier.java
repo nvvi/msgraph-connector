@@ -41,7 +41,14 @@ public class TeamsNotifier extends NewTaskAssignmentListener {
     client = Ivy.rest().client(UUID.fromString("fb0c277e-35a3-481f-8f79-edca67ce1145"));
   }
 
+  private boolean isEnabled() {
+    return Boolean.parseBoolean((Ivy.var().get("teams-notification.enabled")));
+  }
+
   public void notifyGraph(ITask newTask) {
+    if (!isEnabled()) {
+      return;
+    }
     Ivy.log().info("notify ms-teams clients on new teask "+newTask);
 
     // exec as system session: avoid token clash!
