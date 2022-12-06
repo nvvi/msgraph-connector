@@ -9,7 +9,7 @@ Read our docs:
 - Graph [Calendar](msgraph-connector-product/products/msgraph-calendar/README.md)
 - Graph [Mail](msgraph-connector-product/products/msgraph-mail/README.md)
 - Graph [ToDo](msgraph-connector-product/products/msgraph-todo/README.md)
-- Graph [Chat](msgraph-connector-product/products/msgraph-teams/README.md)
+- Graph [Chat](msgraph-connector-product/products/msgraph-chat/README.md)
 
 ## Developer Guidelines
 
