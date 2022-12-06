@@ -96,12 +96,10 @@ public class TeamsNotifier extends NewTaskAssignmentListener {
     ArrayNode members = initChat.putArray("members");
     members.add(createOwner(sender));
     members.add(createOwner(receiver));
-    Ivy.log().info(initChat);
 
     var result = client.path("/chats")
       .request(MediaType.APPLICATION_JSON)
       .post(Entity.entity(initChat, MediaType.APPLICATION_JSON));
-    Ivy.log().info(result.getStatus());
     return result.readEntity(MicrosoftGraphChat.class);
   }
 

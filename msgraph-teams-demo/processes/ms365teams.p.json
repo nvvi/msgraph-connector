@@ -95,10 +95,12 @@
     }, {
       "id" : "f12",
       "type" : "RequestStart",
-      "name" : "teamNotification.ivp",
+      "name" : "teamsNotification.ivp",
       "config" : {
-        "callSignature" : "teamNotification",
-        "outLink" : "teamNotification.ivp"
+        "callSignature" : "teamsNotification",
+        "outLink" : "teamsNotification.ivp",
+        "startDescription" : "Demonstrates how MS-Teams chat notifications can be used to inform users on new Tasks",
+        "startName" : "MS Teams Task Notification"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 288 }
@@ -136,7 +138,8 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 224, "y" : 288 }
+        "at" : { "x" : 224, "y" : 288 },
+        "color" : "changeme"
       },
       "connect" : { "id" : "f14", "to" : "f13" }
     }, {
@@ -147,8 +150,14 @@
         "on the real ivy-engine, this is done automatically by AzureAD security system"
       ],
       "visual" : {
-        "at" : { "x" : 264, "y" : 384 }
+        "at" : { "x" : 303, "y" : 399 },
+        "size" : { "width" : 218, "height" : 90 }
       },
       "connect" : { "id" : "f20", "to" : "f17" }
-    } ]
+    } ],
+  "layout" : {
+    "colors" : {
+      "changeme" : "#f8e45c"
+    }
+  }
 }

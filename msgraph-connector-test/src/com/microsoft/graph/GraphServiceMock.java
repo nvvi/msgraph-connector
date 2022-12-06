@@ -3,6 +3,8 @@ package com.microsoft.graph;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
@@ -186,6 +188,33 @@ public class GraphServiceMock
   {
     return Response.ok()
       .entity(load("json/chatMessages.json"))
+      .build();
+  }
+
+  public static Deque<JsonNode> CHATS = new ArrayDeque<>();
+  public static Deque<JsonNode> MESSAGES = new ArrayDeque<>();
+
+  @POST
+  @Path("/chats")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response createChat(JsonNode payload)
+  {
+    CHATS.add(payload);
+    return Response.ok()
+      .entity(load("json/teams/chatCreated.json"))
+      .build();
+  }
+
+  @POST
+  @Path("/chats/{chat-id}/messages")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response messageCreated(@PathParam("chat-id") String chatId, JsonNode message)
+  {
+    MESSAGES.add(message);
+    return Response.ok()
+      .entity(load("json/teams/messageCreated.json"))
       .build();
   }
 

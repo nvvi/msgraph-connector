@@ -1,0 +1,33 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#chats('19%3A77777777777777777%40unq.gbl.spaces')/messages/$entity",
+  "id": "999999999999",
+  "replyToId": null,
+  "etag": "999999999999",
+  "messageType": "message",
+  "createdDateTime": "2022-12-06T08:05:50.311Z",
+  "lastModifiedDateTime": "2022-12-06T08:05:50.311Z",
+  "lastEditedDateTime": null,
+  "deletedDateTime": null,
+  "subject": null,
+  "summary": null,
+  "chatId": "19:77777777777777777@unq.gbl.spaces",
+  "importance": "normal",
+  "locale": "en-us",
+  "webUrl": null,
+  "channelIdentity": null,
+  "policyViolation": null,
+  "eventDetail": null,
+  "from": {
+    "application": null,
+    "device": null,
+    "user": {
+      "id": "333333333333333333",
+      "displayName": "AxonIvy",
+      "userIdentityType": "aadUser"
+    }
+  },
+  "body": {
+    "contentType": "html",
+    "content": "<h1>your task</h1>"
+  }
+}

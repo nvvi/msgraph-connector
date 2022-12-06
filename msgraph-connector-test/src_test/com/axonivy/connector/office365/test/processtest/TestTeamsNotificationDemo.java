@@ -1,0 +1,47 @@
+package com.axonivy.connector.office365.test.processtest;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Deque;
+
+import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.microsoft.graph.GraphServiceMock;
+
+import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
+import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
+import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
+import ch.ivyteam.ivy.environment.AppFixture;
+import ch.ivyteam.ivy.security.ISession;
+import ch.ivyteam.ivy.workflow.IWorkflowManager;
+import msgraph.teams.notification.TeamsNotifier;
+
+@IvyProcessTest
+class TestTeamsNotificationDemo {
+
+  @Test
+  void createTask(BpmClient bpmClient, ISession session, AppFixture fixture) {
+    fixture.environment("dev-axonivy");
+
+    IWorkflowManager.instance().addWorkflowListener(new TeamsNotifier());
+
+    ExecutionResult result = bpmClient.start()
+            .process("ms365teams/teamsNotification.ivp")
+            .as().session(session)
+            .execute();
+
+    assertThat(result.bpmError()).isNull();
+
+    Deque<JsonNode> chats = GraphServiceMock.CHATS;
+    assertThat(chats).isNotEmpty();
+    JsonNode chat = chats.getLast();
+    assertThat(chat.get("chatType").asText()).isEqualTo("oneOnOne");
+
+    JsonNode message = GraphServiceMock.MESSAGES.getLast();
+    assertThat(message).isNotNull();
+    assertThat(message.get("body").get("content").asText())
+      .contains("<h1>New Task");
+  }
+
+}
