@@ -22,6 +22,7 @@
     <module>${project.name}-product/products/msgraph-calendar</module>
     <module>${project.name}-product/products/msgraph-todo</module>
     <module>${project.name}-product/products/msgraph-mail</module>
+    <module>${project.name}-product/products/msgraph-chat</module>
    
     <module>${project.name}-app</module>
   </modules>

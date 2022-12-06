@@ -1,5 +1,18 @@
 # == Variables ==
 Variables:
+
+  microsoft-connector:
+    # Your Azure Application (client) ID
+    appId: ""
+
+    # Secret key from your applications "certificates & secrets"
+    # [password]
+    secretKey: ""
+    
+    # tenant to use for OAUTH2 request.
+    # set the Azure Directory (tenant) ID, for application requests.
+    tenantId: ""
+    
   teams-notification:
     # enables the generic Microsoft Teams notification for new tasks
     enabled: true

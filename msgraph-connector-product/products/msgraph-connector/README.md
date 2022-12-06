@@ -1,7 +1,7 @@
 # Microsoft 365 Connector
 Axon Ivy’s [Microsoft 365](https://docs.microsoft.com/en-us/graph/overview)
 connector helps you to accelerate process automation initiatives by integrating
-Microsoft Outlook features into your process application within no time. The
+Microsoft Graph features into your process application within no time. The
 Microsoft Graph builds on Microsoft 365 APIs and allows developers to integrate
 their services with Microsoft products, including Windows, Microsoft 365, and
 Azure. This connector:

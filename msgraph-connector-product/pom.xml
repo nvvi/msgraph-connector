@@ -8,6 +8,7 @@
   <properties>
     <skip-product-json>true</skip-product-json>
     <skip-readme>true</skip-readme>
+    <variables.yaml.file>../../../msgraph-connector/config/variables.yaml</variables.yaml.file>
   </properties>
 
   <build>
@@ -23,8 +24,8 @@
               <skip>${skip-product-json}</skip>
               <tasks>
                 <copy file="../../product.json" tofile="${project.build.directory}/product.json" />
-                <replace file="target/product.json" token="@artifact.id@" value="${project.artifactId}" />
-                <replace file="target/product.json" token="-product" value="-demo" />
+                <replace file="${project.build.directory}/product.json" token="@artifact.id@" value="${project.artifactId}" />
+                <replace file="${project.build.directory}/product.json" token="-product" value="-demo" />
               </tasks>
             </configuration>
             <goals>
@@ -40,7 +41,10 @@
                   <fileset dir="../../" includes="doc/**" />
                 </copy>
                 <copy file="README.md" tofile="${project.build.directory}/README.md" />
-                <loadfile property="setupText" srcFile="../../setup.md" encoding="UTF-8" />
+                <copy file="../../setup.md" tofile="${project.build.directory}/setup.md" />
+                <loadfile property="variables.yaml" srcFile="${variables.yaml.file}" encoding="UTF-8" />
+                <replace file="${project.build.directory}/setup.md" token="@variables.yaml@" value="${variables.yaml}" />
+                <loadfile property="setupText" srcFile="${project.build.directory}/setup.md" encoding="UTF-8" />
                 <echo file="${project.build.directory}/README.md" append="true" encoding="UTF-8">${setupText}</echo>
               </tasks>
             </configuration>

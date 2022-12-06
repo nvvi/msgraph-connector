@@ -1,7 +1,23 @@
 ## Setup
 
-1. Register an application on Azure as desribed in the Microsoft's Java Tutorial https://docs.microsoft.com/en-us/graph/tutorials/java?tutorial-step=2
-1. Navigate to `Overview` in the menu and copy the 'Application (client) ID' into Rest Client Definition property `AUTH.appId`.
+### Variables
+
+In order to use this product you must configure multiple variables.
+
+Add the following block to your `config/variables.yaml` file of our 
+main Business Project that will make use of this product:
+
+```
+@variables.yaml@ 
+```
+
+Afterwards set the values as shown in the Azure App setup below.
+
+
+### Azure App
+
+1. Register an application on Azure as described in the Microsoft's Java Tutorial https://docs.microsoft.com/en-us/graph/tutorials/java?tutorial-step=2
+1. Navigate to `Overview` in the menu and copy the 'Application (client) ID' into your variable called `appId` within the `microsoft-connector` section.
 1. Navigate to `Authentication` in the Azure App menu.
 	1. Add a `Redirect URI` in the `Web` Section.
 		- Axon Ivy has an authentication callback URI which follows the pattern `{scheme}://{host}:{port}/{application}/auth/callback`. This URI must be registered in the Azure App.
@@ -10,17 +26,14 @@
  ![set-redirect](doc/img/azure_authCallback.png)
 
 1. Navigate to `Certificate & secrets` in the Azure App menu.
-    1. Create a new secret by pressing `New client secret`. And select any validity period.
-    ![new-secret](doc/img/azure_createSecret.png)
-	1. copy the value of the generated secret into Rest Client Definition property `AUTH.secretKey`.
-	![copy-secret](doc/img/azure_copySecret.png)
+  1. Create a new secret by pressing `New client secret`. And select any validity period.
+  ![new-secret](doc/img/azure_createSecret.png)
+  1. copy the value of the generated secret into your variable called `secretKey` within the `microsoft-connector` section.
+  ![copy-secret](doc/img/azure_copySecret.png)
+
 1. Navigate to `API Permissions` in the Azure App menu.
-Add permissions via `Add a permission` > `Microsoft Graph` > `Delegated permissions`
-The following permission must be granted:
-	- User.Read
-	- Calendars.ReadWrite
-	- Mail.ReadWrite
-	- Tasks.ReadWrite
+Add permissions via `Add a permission` > `Microsoft Graph` > `Delegated permissions`.
+Grant each of the permissions outlined in the `permissions` block of your variables.yaml file.
     ![add-perms](doc/img/azure_addPermission.png)
 
 1. Done. Start any process that connects with Microsoft 365.
