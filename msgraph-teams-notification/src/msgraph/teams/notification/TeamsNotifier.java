@@ -10,6 +10,8 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.axonivy.wf.ext.notification.NewTaskAssignmentListener;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
@@ -81,6 +83,10 @@ public class TeamsNotifier extends NewTaskAssignmentListener {
   private static String toHtml(ITask newTask) {
     var html = new StringBuilder();
     html.append("<h1>New Task ").append(newTask.getName()).append("</h1>");
+    String description = newTask.getDescription();
+    if (StringUtils.isNotEmpty(description)) {
+      html.append("<p>").append(description).append("</p>");
+    }
     html.append("<a href='").append(newTask.getStartLink().getAbsolute()).append("'>Start Task</a>");
     return html.toString();
   }

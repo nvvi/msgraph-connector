@@ -6,6 +6,7 @@ import java.util.Deque;
 
 import org.junit.jupiter.api.Test;
 
+import com.axonivy.wf.ext.notification.NewTaskAssignmentListener;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.microsoft.graph.GraphServiceMock;
 
@@ -24,24 +25,31 @@ class TestTeamsNotificationDemo {
   void createTask(BpmClient bpmClient, ISession session, AppFixture fixture) {
     fixture.environment("dev-axonivy");
 
-    IWorkflowManager.instance().addWorkflowListener(new TeamsNotifier());
+    IWorkflowManager wfMan = IWorkflowManager.instance();
+    NewTaskAssignmentListener notify = new TeamsNotifier();
+    wfMan.addWorkflowListener(notify);
+    try {
+      ExecutionResult result = bpmClient.start()
+              .process("ms365teams/teamsNotification.ivp")
+              .as().session(session)
+              .execute();
 
-    ExecutionResult result = bpmClient.start()
-            .process("ms365teams/teamsNotification.ivp")
-            .as().session(session)
-            .execute();
+      assertThat(result.bpmError()).isNull();
 
-    assertThat(result.bpmError()).isNull();
+      Deque<JsonNode> chats = GraphServiceMock.CHATS;
+      assertThat(chats).isNotEmpty();
+      JsonNode chat = chats.getLast();
+      assertThat(chat.get("chatType").asText()).isEqualTo("oneOnOne");
 
-    Deque<JsonNode> chats = GraphServiceMock.CHATS;
-    assertThat(chats).isNotEmpty();
-    JsonNode chat = chats.getLast();
-    assertThat(chat.get("chatType").asText()).isEqualTo("oneOnOne");
-
-    JsonNode message = GraphServiceMock.MESSAGES.getLast();
-    assertThat(message).isNotNull();
-    assertThat(message.get("body").get("content").asText())
+      JsonNode message = GraphServiceMock.MESSAGES.getLast();
+      assertThat(message).isNotNull();
+      assertThat(message.get("body").get("content").asText())
       .contains("<h1>New Task");
+    }
+    finally {
+      wfMan.removeWorkflowListener(notify);
+    }
+
   }
 
 }
