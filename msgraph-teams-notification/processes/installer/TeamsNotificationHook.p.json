@@ -1,0 +1,22 @@
+{
+  "format" : "10.0.0",
+  "id" : "184E220984F91EC1",
+  "config" : {
+    "data" : "msgraph.teams.notification.Data"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "ProgramStart",
+      "name" : [
+        "register",
+        "hook"
+      ],
+      "config" : {
+        "outerBean" : "msgraph.teams.notification.TeamNotificationStart"
+      },
+      "visual" : {
+        "at" : { "x" : 80, "y" : 56 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    } ]
+}

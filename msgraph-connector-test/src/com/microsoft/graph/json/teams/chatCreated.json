@@ -1,0 +1,12 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#chats/$entity",
+  "id": "19:126263ee-555555555555555555-bd75-4c42-b79a-ab9f64388ae2@unq.gbl.spaces",
+  "topic": null,
+  "createdDateTime": "2022-11-25T16:59:13.767Z",
+  "lastUpdatedDateTime": "2022-11-25T16:59:13.767Z",
+  "chatType": "oneOnOne",
+  "webUrl": "https://teams.microsoft.com/l/chat/19%3A126263ee-555555555555555555-bd75-4c42-b79a-ab9f64388ae2%40unq.gbl.spaces/0?tenantId=2323232",
+  "tenantId": "2323232",
+  "viewpoint": null,
+  "onlineMeetingInfo": null
+}
