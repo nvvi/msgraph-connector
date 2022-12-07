@@ -14,6 +14,7 @@
     <skip-product-json>false</skip-product-json>
     <skip-readme>false</skip-readme>
     <variables.yaml.file>../../../msgraph-teams-notification/config/variables.yaml</variables.yaml.file>
+    <dependent.product>msgraph-teams-notification</dependent.product>
   </properties>
 
 </project>

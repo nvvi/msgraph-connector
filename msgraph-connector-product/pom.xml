@@ -9,6 +9,7 @@
     <skip-product-json>true</skip-product-json>
     <skip-readme>true</skip-readme>
     <variables.yaml.file>../../../msgraph-connector/config/variables.yaml</variables.yaml.file>
+    <dependent.product>msgraph-connector</dependent.product>
   </properties>
 
   <build>
@@ -24,7 +25,10 @@
               <skip>${skip-product-json}</skip>
               <tasks>
                 <copy file="../../product.json" tofile="${project.build.directory}/product.json" />
-                <replace file="${project.build.directory}/product.json" token="@artifact.id@" value="${project.artifactId}" />
+                <replace file="${project.build.directory}/product.json">
+                  <replacefilter token="@artifact.id@" value="${project.artifactId}"/>
+                  <replacefilter token="@dependent.product@" value="${dependent.product}"/>
+                </replace>
                 <replace file="${project.build.directory}/product.json" token="-product" value="-demo" />
               </tasks>
             </configuration>

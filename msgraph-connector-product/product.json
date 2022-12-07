@@ -28,7 +28,7 @@
         "dependencies": [
           {
             "groupId": "com.axonivy.connector.office365",
-            "artifactId": "msgraph-connector",
+            "artifactId": "@dependent.product@",
             "version": "${version}",
             "type": "iar"
           }
