@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.office365</groupId>
   <artifactId>msgraph-product</artifactId>
-  <version>10.0.2-SNAPSHOT</version>
+  <version>10.0.2</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -26,8 +26,8 @@
               <tasks>
                 <copy file="../../product.json" tofile="${project.build.directory}/product.json" />
                 <replace file="${project.build.directory}/product.json">
-                  <replacefilter token="@artifact.id@" value="${project.artifactId}"/>
-                  <replacefilter token="@dependent.product@" value="${dependent.product}"/>
+                  <replacefilter token="@artifact.id@" value="${project.artifactId}" />
+                  <replacefilter token="@dependent.product@" value="${dependent.product}" />
                 </replace>
                 <replace file="${project.build.directory}/product.json" token="-product" value="-demo" />
               </tasks>
