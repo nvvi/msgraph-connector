@@ -7,7 +7,9 @@ public class LocalTestUserWithAADid {
 
   public static void assign(String username, String azureID) {
     var usr = (User) ISecurityContext.current().users().find(username);
-    usr.setExternalId(azureID);
+    if (usr != null && usr.getExternalId() == null) {
+      usr.setExternalId(azureID);
+    }
   }
 
 }
