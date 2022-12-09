@@ -60,6 +60,7 @@ public class OAuth2Feature implements Feature{
       ctxt -> requestToken(ctxt, graphUri),
       graphUri
     );
+    oauth2.tokenScopeProperty(Property.SCOPE);
     context.register(oauth2, Priorities.AUTHORIZATION);
     return true;
   }
