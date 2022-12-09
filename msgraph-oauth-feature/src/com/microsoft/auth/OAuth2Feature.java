@@ -61,6 +61,7 @@ public class OAuth2Feature implements Feature{
       graphUri
     );
     oauth2.tokenScopeProperty(Property.SCOPE);
+    oauth2.tokenSuffix(()->grantType(config));
     context.register(oauth2, Priorities.AUTHORIZATION);
     return true;
   }
@@ -98,22 +99,20 @@ public class OAuth2Feature implements Feature{
   static Form createTokenPayload(FeatureConfig config, Optional<String> authCode, Optional<String> refreshToken) {
     Form form = new Form();
     form.param("client_id", config.readMandatory(Property.APP_ID));
+    form.param("grant_type", grantType(config));
     if (authCode.isPresent()) {
       // use user permissions
-      form.param("grant_type", "authorization_code");
       form.param("scope", getPersonalScope(config));
       form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
       form.param("code", authCode.get());
     }
     else  if (isUserPassAuth(config)) {
       // weak security: app acts as personal user!
-      form.param("grant_type", "password");
       form.param("scope", getPersonalScope(config));
       form.param("username", config.readMandatory(Property.USER));
       form.param("password", config.readMandatory(Property.PASS));
     } else if (isAppAuth(config)) {
       // use app permission
-      form.param("grant_type", "client_credentials");
       form.param("scope", config.read(Property.SCOPE).orElse(Default.APP_SCOPE));
     }
 
@@ -126,6 +125,16 @@ public class OAuth2Feature implements Feature{
     }
     form.param("client_secret", config.readMandatory(Property.CLIENT_SECRET));
     return form;
+  }
+
+  private static String grantType(FeatureConfig config) {
+    if (isAppAuth(config)){
+      return "client_credentials";
+    }
+    if (isUserPassAuth(config))  {
+      return "password";
+    }
+    return "authorization_code";
   }
 
   private static BpmPublicErrorBuilder authError(FeatureConfig config, OAuth2UriProperty uriFactory) {
