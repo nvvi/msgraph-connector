@@ -61,7 +61,7 @@ public class OAuth2Feature implements Feature{
       graphUri
     );
     oauth2.tokenScopeProperty(Property.SCOPE);
-    oauth2.tokenSuffix(()->grantType(config));
+    oauth2.tokenSuffix(()->GrantType.of(config).type);
     context.register(oauth2, Priorities.AUTHORIZATION);
     return true;
   }
@@ -70,11 +70,11 @@ public class OAuth2Feature implements Feature{
     FeatureConfig config = ctxt.config;
     var authCode = ctxt.authCode();
     var refreshToken = ctxt.refreshToken();
-    if (authCode.isEmpty() && refreshToken.isEmpty() &&
-       !(isAppAuth(config) || isUserPassAuth(config))) {
+    GrantType grant = GrantType.of(config);
+    if (authCode.isEmpty() && refreshToken.isEmpty() && GrantType.AUTH_CODE == grant) {
       authError(config, uriFactory)
-              .withMessage("missing permission from user to act in his name.")
-              .throwError();
+        .withMessage("missing permission from user to act in his name.")
+        .throwError();
     }
 
     Form form = createTokenPayload(config, authCode, refreshToken);
@@ -84,55 +84,37 @@ public class OAuth2Feature implements Feature{
     return response;
   }
 
-  private static boolean isAppAuth(FeatureConfig config) {
-    return bool(config.read(Property.USE_APP_PERMISSIONS));
-  }
-
-  private static boolean isUserPassAuth(FeatureConfig config) {
-    return bool(config.read(Property.USE_USER_PASS_FLOW));
-  }
-
-  private static boolean bool(Optional<String> value) {
-    return "true".equals(value.orElse(null));
-  }
-
   static Form createTokenPayload(FeatureConfig config, Optional<String> authCode, Optional<String> refreshToken) {
     Form form = new Form();
     form.param("client_id", config.readMandatory(Property.APP_ID));
-    form.param("grant_type", grantType(config));
-    if (authCode.isPresent()) {
-      // use user permissions
-      form.param("scope", getPersonalScope(config));
-      form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
-      form.param("code", authCode.get());
-    }
-    else if (isUserPassAuth(config)) {
-      // weak security: app acts as personal user!
-      form.param("scope", getPersonalScope(config));
-      form.param("username", config.readMandatory(Property.USER));
-      form.param("password", config.readMandatory(Property.PASS));
-    } else if (isAppAuth(config)) {
-      // use app permission
-      form.param("scope", config.read(Property.SCOPE).orElse(Default.APP_SCOPE));
-    }
-
+    form.param("client_secret", config.readMandatory(Property.CLIENT_SECRET));
+    GrantType grant = GrantType.of(config);
+    form.param("grant_type", grant.type);
+    configureGrant(config, authCode, form, grant);
     if (refreshToken.isPresent()) {
       form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
       form.param("refresh_token", refreshToken.get());
       form.asMap().putSingle("grant_type", "refresh_token");
     }
-    form.param("client_secret", config.readMandatory(Property.CLIENT_SECRET));
     return form;
   }
 
-  private static String grantType(FeatureConfig config) {
-    if (isAppAuth(config)){
-      return "client_credentials";
+  private static void configureGrant(FeatureConfig config, Optional<String> authCode, Form form, GrantType grant) {
+    switch (grant) {
+      case APPLICATION:
+        form.param("scope", config.read(Property.SCOPE).orElse(Default.APP_SCOPE));
+        break;
+      case PASSWORD:
+        form.param("scope", getPersonalScope(config));
+        form.param("username", config.readMandatory(Property.USER));
+        form.param("password", config.readMandatory(Property.PASS));
+        break;
+      default:
+      case AUTH_CODE:
+        form.param("scope", getPersonalScope(config));
+        form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
+        authCode.ifPresent(code -> form.param("code", code));
     }
-    if (isUserPassAuth(config))  {
-      return "password";
-    }
-    return "authorization_code";
   }
 
   private static BpmPublicErrorBuilder authError(FeatureConfig config, OAuth2UriProperty uriFactory) {
@@ -153,5 +135,43 @@ public class OAuth2Feature implements Feature{
 
   private static String getPersonalScope(FeatureConfig config) {
     return config.read(Property.SCOPE).orElse(Default.USER_SCOPE);
+  }
+
+  private static enum GrantType {
+    /** work in the name of a user: requires user consent **/
+    AUTH_CODE("authorization_code"),
+
+    APPLICATION("client_credentials"),
+
+    /** weak security: app acts as pre-configured personal user! **/
+    PASSWORD("password");
+
+    private String type;
+
+    GrantType(String type) {
+      this.type = type;
+    }
+
+    static GrantType of(FeatureConfig config) {
+      if (isAppAuth(config)){
+        return GrantType.APPLICATION;
+      }
+      if (isUserPassAuth(config))  {
+        return GrantType.PASSWORD;
+      }
+      return GrantType.AUTH_CODE;
+    }
+
+    private static boolean isAppAuth(FeatureConfig config) {
+      return bool(config.read(Property.USE_APP_PERMISSIONS));
+    }
+
+    private static boolean isUserPassAuth(FeatureConfig config) {
+      return bool(config.read(Property.USE_USER_PASS_FLOW));
+    }
+
+    private static boolean bool(Optional<String> value) {
+      return value.map(Boolean::parseBoolean).orElse(Boolean.FALSE);
+    }
   }
 }
