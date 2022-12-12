@@ -134,6 +134,7 @@
         "AAD user"
       ],
       "config" : {
+        "security" : "system",
         "output" : {
           "code" : "msgraph.teams.LocalTestUserWithAADid.assign(\"Megan\", \"2dbe0df3-26eb-4685-a62d-1a0c165efa6a\");"
         }

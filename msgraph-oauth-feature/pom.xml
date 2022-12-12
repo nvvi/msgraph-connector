@@ -25,6 +25,10 @@
         <artifactId>project-build-plugin</artifactId>
         <version>10.0.1</version>
         <extensions>true</extensions>
+        <configuration>
+          <ivyVersion>10.0.3</ivyVersion>
+          <engineDownloadUrl>https://dev.axonivy.com/permalink/nightly-10.0/axonivy-engine.zip</engineDownloadUrl>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
