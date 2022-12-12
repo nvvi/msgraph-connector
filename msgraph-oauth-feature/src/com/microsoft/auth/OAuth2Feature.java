@@ -106,7 +106,7 @@ public class OAuth2Feature implements Feature{
       form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
       form.param("code", authCode.get());
     }
-    else  if (isUserPassAuth(config)) {
+    else if (isUserPassAuth(config)) {
       // weak security: app acts as personal user!
       form.param("scope", getPersonalScope(config));
       form.param("username", config.readMandatory(Property.USER));
@@ -116,12 +116,10 @@ public class OAuth2Feature implements Feature{
       form.param("scope", config.read(Property.SCOPE).orElse(Default.APP_SCOPE));
     }
 
-    if (refreshToken.isPresent())
-    {
-      form.param("scope", getPersonalScope(config));
+    if (refreshToken.isPresent()) {
       form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
       form.param("refresh_token", refreshToken.get());
-      form.param("grant_type", "refresh_token");
+      form.asMap().putSingle("grant_type", "refresh_token");
     }
     form.param("client_secret", config.readMandatory(Property.CLIENT_SECRET));
     return form;
