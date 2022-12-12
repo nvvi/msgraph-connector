@@ -15,7 +15,6 @@ Variables:
   teams-notification:
     # enables the generic Microsoft Teams notification for new tasks
     enabled: true
-    permissions: "User.Read Chat.Create Chat.ReadWrite"
     # technical user that sends ivy-notifications
     username: ""
     # secret of the technical user

@@ -33,6 +33,8 @@ import ch.ivyteam.ivy.workflow.IWorkflowManager;
 
 public class TeamsNotifier extends NewTaskAssignmentListener {
 
+  private static final String CHAT_PERMISSIONS = "User.Read Chat.Create Chat.ReadWrite";
+
   private WebTarget client;
   private MicrosoftGraphUser me;
 
@@ -44,7 +46,7 @@ public class TeamsNotifier extends NewTaskAssignmentListener {
 
   private static WebTarget backendClient() {
     return new MsGraph().client()
-      .property(OAuth2Feature.Property.SCOPE, Ivy.var().get("teams-notification.permissions"))
+      .property(OAuth2Feature.Property.SCOPE, CHAT_PERMISSIONS)
       .property(OAuth2Feature.Property.USE_APP_PERMISSIONS, Boolean.FALSE.toString())
       .property(OAuth2Feature.Property.USE_USER_PASS_FLOW, Boolean.TRUE.toString())
       .property(OAuth2Feature.Property.USER, Ivy.var().get("teams-notification.username"))
