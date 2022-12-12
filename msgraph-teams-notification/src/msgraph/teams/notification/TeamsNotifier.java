@@ -3,7 +3,6 @@ package msgraph.teams.notification;
 import static java.util.function.Predicate.not;
 
 import java.util.Objects;
-import java.util.UUID;
 import java.util.stream.Stream;
 
 import javax.ws.rs.client.Entity;
@@ -16,11 +15,13 @@ import com.axonivy.wf.ext.notification.NewTaskAssignmentListener;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.microsoft.auth.OAuth2Feature;
 import com.microsoft.graph.MicrosoftGraphBodyType;
 import com.microsoft.graph.MicrosoftGraphChat;
 import com.microsoft.graph.MicrosoftGraphChatMessage;
 import com.microsoft.graph.MicrosoftGraphItemBody;
 import com.microsoft.graph.MicrosoftGraphUser;
+import com.microsoft.graph.MsGraph;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.security.IRole;
@@ -32,13 +33,24 @@ import ch.ivyteam.ivy.workflow.IWorkflowManager;
 
 public class TeamsNotifier extends NewTaskAssignmentListener {
 
+  private static final String CHAT_PERMISSIONS = "User.Read Chat.Create Chat.ReadWrite";
+
   private WebTarget client;
   private MicrosoftGraphUser me;
 
   public TeamsNotifier() {
     super(IWorkflowManager.instance());
     taskHandler(this::notifyGraph);
-    client = Ivy.rest().client(UUID.fromString("fb0c277e-35a3-481f-8f79-edca67ce1145"));
+    client = backendClient();
+  }
+
+  private static WebTarget backendClient() {
+    return new MsGraph().client()
+      .property(OAuth2Feature.Property.SCOPE, CHAT_PERMISSIONS)
+      .property(OAuth2Feature.Property.USE_APP_PERMISSIONS, Boolean.FALSE.toString())
+      .property(OAuth2Feature.Property.USE_USER_PASS_FLOW, Boolean.TRUE.toString())
+      .property(OAuth2Feature.Property.USER, Ivy.var().get("teams-notification.username"))
+      .property(OAuth2Feature.Property.PASS, Ivy.var().get("teams-notification.userpass"));
   }
 
   private boolean isEnabled() {

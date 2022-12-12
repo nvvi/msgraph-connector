@@ -102,6 +102,28 @@ public class TestOAuth2Feature {
       .startsWith(OAuth2Feature.Default.USER_SCOPE);
   }
 
+  @Test
+  void payload_refresh() {
+    Map<String, Object> props = Map.of(
+      "AUTH.appId", "1234",
+      "AUTH.secretKey", "5678",
+      "AUTH.useAppPermissions", Boolean.TRUE.toString()
+    );
+    var config = toConfig(props);
+    var refreshToken = "myRefreshee";
+    var payload = OAuth2Feature.createTokenPayload(config, Optional.empty(), Optional.of(refreshToken)).asMap();
+
+    assertThat(payload.getFirst("grant_type"))
+      .as("fire a token-refresh request, rather than leasing a new token")
+      .isEqualTo("refresh_token");
+    assertThat(payload.getFirst("scope"))
+      .as("keep scope of the original request")
+      .isEqualTo(OAuth2Feature.Default.APP_SCOPE);
+    assertThat(payload.keySet())
+      .as("all default (app-auth) params plus refresh_token").containsOnly(
+      "client_id", "client_secret", "scope", "redirect_uri", "refresh_token", "grant_type");
+  }
+
   private static MultivaluedMap<String, String> toPayload(Map<String, Object> props) {
     var config = toConfig(props);
     return toPayload(config);
