@@ -92,7 +92,7 @@ public class OAuth2Feature implements Feature{
     form.param("grant_type", grant.type);
     configureGrant(config, authCode, form, grant);
     if (refreshToken.isPresent()) {
-      form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
+      form.param("redirect_uri", ivyCallbackUri().toASCIIString());
       form.param("refresh_token", refreshToken.get());
       form.asMap().putSingle("grant_type", "refresh_token");
     }
@@ -112,7 +112,7 @@ public class OAuth2Feature implements Feature{
       default:
       case AUTH_CODE:
         form.param("scope", getPersonalScope(config));
-        form.param("redirect_uri", OAuth2CallbackUriBuilder.create().toUri().toASCIIString());
+        form.param("redirect_uri", ivyCallbackUri().toASCIIString());
         authCode.ifPresent(code -> form.param("code", code));
     }
   }
@@ -127,10 +127,14 @@ public class OAuth2Feature implements Feature{
     return UriBuilder.fromUri(uriFactory.getUri("authorize"))
       .queryParam("client_id", config.readMandatory(Property.APP_ID))
       .queryParam("scope", getPersonalScope(config))
-      .queryParam("redirect_uri", OAuth2CallbackUriBuilder.create().toUri())
+      .queryParam("redirect_uri", ivyCallbackUri())
       .queryParam("response_type", "code")
       .queryParam("response_mode", "query")
       .build();
+  }
+
+  private static URI ivyCallbackUri() {
+    return OAuth2CallbackUriBuilder.create().toUrl();
   }
 
   private static String getPersonalScope(FeatureConfig config) {
