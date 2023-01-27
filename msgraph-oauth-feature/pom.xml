@@ -27,6 +27,7 @@
         <extensions>true</extensions>
         <configuration>
           <engineDownloadUrl>https://dev.axonivy.com/permalink/nightly-10.0/axonivy-engine.zip</engineDownloadUrl>
+          <ivyVersion>10.0.4</ivyVersion>
         </configuration>
       </plugin>
       <plugin>

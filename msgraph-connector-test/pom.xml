@@ -77,6 +77,14 @@
         <artifactId>project-build-plugin</artifactId>
         <version>10.0.3</version>
         <extensions>true</extensions>
+        <configuration>
+          <ivyVersion>10.0.4</ivyVersion>
+          <additionalVmOptions>-Dtest.azure.app.id=${test.azure.app.id}
+        		-Dtest.azure.app.secretKey=${test.azure.app.secretKey}
+        		-Dtest.azure.app.tenantId=${test.azure.app.tenantId}
+        		-Dtest.azure.webtest.username=${test.azure.webtest.username}
+        		-Dtest.azure.webtest.pass=${test.azure.webtest.pass}</additionalVmOptions>
+        </configuration>
       </plugin>
     </plugins>
   </build>
