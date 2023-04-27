@@ -26,7 +26,7 @@ Variables:
       user: ""
       # technical users password
       # [password]
-      pass: "${encrypt:thePassword}"
+      pass: ""
 
     # permissions to request access to.
     # you may exclude or add some, as your azure administrator allows or restricts them.
