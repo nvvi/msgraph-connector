@@ -14,4 +14,4 @@ Variables:
     username: ""
     # secret of the technical user
     # [password]
-    userpass: "${encrypt:somePass}"
+    userpass: ""
