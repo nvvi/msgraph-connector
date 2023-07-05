@@ -19,6 +19,7 @@
     </pluginRepository>
   </pluginRepositories>
   <build>
+    <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
@@ -42,6 +43,17 @@
                 <descriptor>jar.xml</descriptor>
               </descriptors>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals><goal>jar-no-fork</goal></goals>
           </execution>
         </executions>
       </plugin>
