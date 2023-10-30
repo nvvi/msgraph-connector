@@ -5,17 +5,22 @@
   <artifactId>msgraph-connector-test</artifactId>
   <version>10.0.5-SNAPSHOT</version>
   <packaging>iar-integration-test</packaging>
+  
+  <properties>
+    <tester.version>10.0.14</tester.version>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>com.axonivy.ivy.test</groupId>
       <artifactId>unit-tester</artifactId>
-      <version>10.0.0</version>
+      <version>${tester.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.axonivy.ivy.webtest</groupId>
       <artifactId>web-tester</artifactId>
-      <version>10.0.0</version>
+      <version>${tester.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -49,6 +54,7 @@
       <type>iar</type>
     </dependency>
   </dependencies>
+  
   <pluginRepositories>
     <pluginRepository>
       <snapshots>
@@ -58,6 +64,16 @@
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
+  <repositories>
+    <repository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+  
   <build>
     <testSourceDirectory>src_test</testSourceDirectory>
     <pluginManagement>
@@ -69,21 +85,73 @@
             <skip>true</skip>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <executions>
+          <execution>
+            <id>oauth2-test</id>
+            <phase>test</phase>
+            <goals><goal>test</goal></goals>
+            <configuration>
+              <includes>
+                <include>**/RestOauthIvyTest.java</include>
+              </includes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>default-test</id>
+            <configuration>
+              <excludes>
+                <exclude>**/RestOauthIvyTest.java</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+          </executions>
+        </plugin>
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <executions>
+        <execution>
+          <id>oauth-integration-test</id>
+            <phase>integration-test</phase>
+            <goals><goal>integration-test</goal></goals>
+            <configuration>
+              <includes>
+                <include>**/WebTestOauth2LoginRedirectIT.java</include>
+              </includes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>default-integration-test</id>
+            <phase>never</phase>
+            <configuration>
+              <excludes>
+                <exclude>**/WebTestOauth2LoginRedirectIT.java</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>replaced-default-integration-test</id>
+            <phase>integration-test</phase><!-- run after oauth2 tests -->
+            <goals><goal>integration-test</goal></goals>
+            <configuration>
+              <excludes>
+                <exclude>**/WebTestOauth2LoginRedirectIT.java</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
-        <version>10.0.6</version>
+        <version>10.0.14</version>
         <extensions>true</extensions>
-        <configuration>
-          <additionalVmOptions>-Dtest.azure.app.id=${test.azure.app.id}
-        		-Dtest.azure.app.secretKey=${test.azure.app.secretKey}
-        		-Dtest.azure.app.tenantId=${test.azure.app.tenantId}
-        		-Dtest.azure.webtest.username=${test.azure.webtest.username}
-        		-Dtest.azure.webtest.pass=${test.azure.webtest.pass}</additionalVmOptions>
-        </configuration>
       </plugin>
     </plugins>
   </build>

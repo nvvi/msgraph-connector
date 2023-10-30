@@ -15,6 +15,7 @@ import org.openqa.selenium.By;
 import com.axonivy.connector.office365.test.integration.helper.SetupHelper;
 import com.axonivy.ivy.webtest.IvyWebTest;
 import com.axonivy.ivy.webtest.engine.EngineUrl;
+import com.axonivy.ivy.webtest.engine.WebAppFixture;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverConditions;
 
@@ -45,7 +46,12 @@ class WebTestOauth2LoginRedirectIT {
   }
 
   @Test
-  void redirect() {
+  void redirect(WebAppFixture fixture) {
+    SetupHelper.load().entrySet().forEach(prop -> {
+      System.out.println("setting up "+prop.getKey());
+      fixture.var(prop.getKey(), prop.getValue());
+    });
+
     Selenide.open(EngineUrl.createProcessUrl("/msgraph-connector-test/17F40684A56F5FEF/start.ivp"));
     Selenide.open(EngineUrl.createProcessUrl("/msgraph-connector-test/185F3CF9C3910C01/start.ivp"));
     WebDriverConditions.currentFrameUrlContaining("https://login.microsoft.com");

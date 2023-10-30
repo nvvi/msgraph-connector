@@ -2,37 +2,43 @@ package com.axonivy.connector.office365.test.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
-import java.util.UUID;
-
 import javax.ws.rs.core.MediaType;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.axonivy.connector.office365.test.integration.helper.SetupHelper;
+import com.microsoft.graph.GraphTestClient;
 
-import ch.ivyteam.ivy.environment.AppFixture;
+import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.environment.IvyTest;
 
-@IvyTest
+@IvyTest(enableWebServer = true)
 class RestOauthIvyTest{
 
   @BeforeEach
-  void beforeEach(AppFixture fixture) throws IOException {
+  void beforeEach(IApplication app) {
     SetupHelper.setup();
-    fixture.config("RestClients.Microsoft 365 (Partial Graph API).Properties.AUTH.useAppPermissions", "true");
-    fixture.config("RestClients.Microsoft 365 (Partial Graph API).Properties.AUTH.scope", "https://graph.microsoft.com/.default");
+    GraphTestClient.resetForApp(app);
   }
 
   @Test
   void callbackOauthRedirect() {
-    var restClient = Ivy.rest().client(UUID.fromString("007036dc-72d1-429f-88a7-ba5d5cf5ae58"));
-    var response = restClient.path("/applications").request(MediaType.APPLICATION_JSON).get();
+    var restClient = Ivy.rest().client(GraphTestClient.GRAPH_CLIENT_ID);
+    String appId = Ivy.var().get("microsoft-connector.appId");
+    String secret = Ivy.var().get("microsoft-connector.secretKey");
+    String tenantId = Ivy.var().get("microsoft-connector.tenantId");
+    var response = restClient.path("/applications")
+      .property("AUTH.appId", appId)
+      .property("AUTH.secretKey", secret)
+      .property("AUTH.useAppPermissions", Boolean.TRUE.toString())
+      .property("AUTH.scope", "https://graph.microsoft.com/.default")
+      .property("AUTH.baseUri", "https://login.microsoftonline.com/" + tenantId + "/oauth2/v2.0")
+      .request(MediaType.APPLICATION_JSON).get();
     assertThat(response.readEntity(String.class))
-            .contains("\"uri\":\"http://localhost:8081/oauth2/callback\"")
-            .contains("\"publisherDomain\":\"azureivyteam.onmicrosoft.com\"");
+      .contains("\"uri\":\"http://localhost:8081/oauth2/callback\"")
+      .contains("\"publisherDomain\":\"azureivyteam.onmicrosoft.com\"");
   }
 
 }
