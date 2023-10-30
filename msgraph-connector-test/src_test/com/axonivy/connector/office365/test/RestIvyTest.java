@@ -3,7 +3,6 @@ package com.axonivy.connector.office365.test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.microsoft.graph.GraphTestClient;
@@ -13,8 +12,7 @@ import ch.ivyteam.ivy.environment.AppFixture;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.environment.IvyTest;
 
-@IvyTest
-@Disabled
+@IvyTest(enableWebServer = true)
 public class RestIvyTest {
 
   @BeforeEach
