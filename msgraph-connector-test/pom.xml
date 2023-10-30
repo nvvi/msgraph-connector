@@ -5,17 +5,22 @@
   <artifactId>msgraph-connector-test</artifactId>
   <version>10.0.5-SNAPSHOT</version>
   <packaging>iar-integration-test</packaging>
+  
+  <properties>
+    <tester.version>10.0.14</tester.version>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>com.axonivy.ivy.test</groupId>
       <artifactId>unit-tester</artifactId>
-      <version>10.0.0</version>
+      <version>${tester.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.axonivy.ivy.webtest</groupId>
       <artifactId>web-tester</artifactId>
-      <version>10.0.0</version>
+      <version>${tester.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -49,6 +54,7 @@
       <type>iar</type>
     </dependency>
   </dependencies>
+  
   <pluginRepositories>
     <pluginRepository>
       <snapshots>
@@ -58,6 +64,16 @@
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </pluginRepository>
   </pluginRepositories>
+  <repositories>
+    <repository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+  
   <build>
     <testSourceDirectory>src_test</testSourceDirectory>
     <pluginManagement>
