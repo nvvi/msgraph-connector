@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -23,27 +25,39 @@ public class SetupHelper {
   public static Map<String, String> load() {
     Map<String, String> loaded = new HashMap<>();
 
-    var appId = System.getProperty(APP_ID_PROP);
-    var secretKey = System.getProperty(SECRET_KEY_PROP);
-    var tenantId = System.getProperty(TENANT_ID_PROP);
+    var appId = new AtomicReference<>(System.getProperty(APP_ID_PROP));
+    var secretKey = new AtomicReference<>(System.getProperty(SECRET_KEY_PROP));
+    var tenantId = new AtomicReference<>(System.getProperty(TENANT_ID_PROP));
 
-    if (StringUtils.isEmpty(secretKey)) {
-      try (var in = SetupHelper.class.getResourceAsStream("client.properties")) {
-        if (in != null) {
-          var props = new Properties();
-          props.load(in);
-          appId = (String) props.get(APP_ID_PROP);
-          secretKey = (String) props.get(SECRET_KEY_PROP);
-          tenantId = (String) props.get(TENANT_ID_PROP);
-        }
-      } catch (IOException ex) {
-        throw new RuntimeException("Failed to load client.props", ex);
-      }
+    if (StringUtils.isEmpty(secretKey.get())) {
+      consume(props -> {
+        appId.set(props.getProperty(APP_ID_PROP));
+        secretKey.set(props.getProperty(SECRET_KEY_PROP));
+        tenantId.set(props.getProperty(TENANT_ID_PROP));
+      });
     }
 
-    loaded.put("microsoft-connector.appId", appId);
-    loaded.put("microsoft-connector.secretKey", secretKey);
-    loaded.put("microsoft-connector.tenantId", tenantId);
+    loaded.put("microsoft-connector.appId", appId.get());
+    loaded.put("microsoft-connector.secretKey", secretKey.get());
+    loaded.put("microsoft-connector.tenantId", tenantId.get());
     return loaded;
+  }
+
+  public static void consume(Consumer<Properties> reader) {
+    String resource = "client.properties";
+    try (var in = SetupHelper.class.getResourceAsStream(resource)) {
+      System.out.println("trying to load secrets from "+resource);
+      if (in != null) {
+        var props = new Properties();
+        props.load(in);
+        if (props.isEmpty()) {
+          System.err.println("no properties defined in "+resource);
+          return;
+        }
+        reader.accept(props);
+      }
+    } catch (IOException ex) {
+      throw new RuntimeException("Failed to load client.props", ex);
+    }
   }
 }
