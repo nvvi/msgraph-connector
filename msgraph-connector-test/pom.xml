@@ -97,11 +97,6 @@
               <includes>
                 <include>**/RestOauthIvyTest.java</include>
               </includes>
-              <systemPropertyVariables>
-                <test.azure.app.id>${test.azure.app.id}</test.azure.app.id>
-                <test.azure.app.secretKey>${test.azure.app.secretKey}</test.azure.app.secretKey>
-                <test.azure.app.tenantId>${test.azure.app.tenantId}</test.azure.app.tenantId>
-              </systemPropertyVariables>
             </configuration>
           </execution>
           <execution>
@@ -126,11 +121,6 @@
               <includes>
                 <include>**/WebTestOauth2LoginRedirectIT.java</include>
               </includes>
-              <systemPropertyVariables>
-                <test.azure.app.id>${test.azure.app.id}</test.azure.app.id>
-                <test.azure.app.secretKey>${test.azure.app.secretKey}</test.azure.app.secretKey>
-                <test.azure.app.tenantId>${test.azure.app.tenantId}</test.azure.app.tenantId>
-              </systemPropertyVariables>
             </configuration>
           </execution>
           <execution>
@@ -162,13 +152,6 @@
         <artifactId>project-build-plugin</artifactId>
         <version>10.0.14</version>
         <extensions>true</extensions>
-        <configuration>
-          <additionalVmOptions>-Dtest.azure.app.id=${test.azure.app.id}
-            -Dtest.azure.app.secretKey=${test.azure.app.secretKey}
-            -Dtest.azure.app.tenantId=${test.azure.app.tenantId}
-            -Dtest.azure.webtest.username=${test.azure.webtest.username}
-            -Dtest.azure.webtest.pass=${test.azure.webtest.pass}</additionalVmOptions>
-        </configuration>
       </plugin>
     </plugins>
   </build>
