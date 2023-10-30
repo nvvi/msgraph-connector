@@ -19,7 +19,7 @@ import ch.ivyteam.ivy.security.ISession;
 import msgraph.calendar.demo.CalendarDemo;
 import msgraph.connector.NewEvent;
 
-@IvyProcessTest
+@IvyProcessTest(enableWebServer = true)
 class TestCalendarDemo {
 
   @BeforeEach

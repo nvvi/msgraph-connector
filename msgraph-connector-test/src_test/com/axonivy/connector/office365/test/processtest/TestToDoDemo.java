@@ -17,7 +17,7 @@ import ch.ivyteam.ivy.security.ISession;
 import msgraph.connector.NewToDo;
 import msgraph.todo.demo.ToDoDemo;
 
-@IvyProcessTest
+@IvyProcessTest(enableWebServer = true)
 public class TestToDoDemo {
 
   @BeforeEach

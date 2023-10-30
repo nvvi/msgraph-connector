@@ -17,7 +17,7 @@ import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.security.ISession;
 import msgraph.connector.NewMail;
 
-@IvyProcessTest
+@IvyProcessTest(enableWebServer = true)
 class TestMailDemo {
 
   @BeforeEach

@@ -20,7 +20,7 @@ import ch.ivyteam.ivy.security.ISession;
 import ch.ivyteam.ivy.workflow.IWorkflowManager;
 import msgraph.teams.notification.TeamsNotifier;
 
-@IvyProcessTest
+@IvyProcessTest(enableWebServer = true)
 class TestTeamsNotificationDemo {
 
   @BeforeEach
