@@ -2,8 +2,6 @@ package com.axonivy.connector.office365.test.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
-
 import javax.ws.rs.core.MediaType;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +18,7 @@ import ch.ivyteam.ivy.environment.IvyTest;
 class RestOauthIvyTest{
 
   @BeforeEach
-  void beforeEach(IApplication app) throws IOException {
+  void beforeEach(IApplication app) {
     SetupHelper.setup();
     GraphTestClient.resetForApp(app);
   }
