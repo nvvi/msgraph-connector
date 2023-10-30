@@ -28,12 +28,15 @@ class RestOauthIvyTest{
   @Test
   void callbackOauthRedirect() {
     var restClient = Ivy.rest().client(GraphTestClient.GRAPH_CLIENT_ID);
+    String appId = Ivy.var().get("microsoft-connector.appId");
+    String secret = Ivy.var().get("microsoft-connector.secretKey");
+    String tenantId = Ivy.var().get("microsoft-connector.tenantId");
     var response = restClient.path("/applications")
-      .property("AUTH.appId", Ivy.var().get("microsoft-connector.appId"))
-      .property("AUTH.secretKey", Ivy.var().get("microsoft-connector.secretKey"))
+      .property("AUTH.appId", appId)
+      .property("AUTH.secretKey", secret)
       .property("AUTH.useAppPermissions", Boolean.TRUE.toString())
       .property("AUTH.scope", "https://graph.microsoft.com/.default")
-      .property("AUTH.baseUri", "https://login.microsoftonline.com/" + Ivy.var().get("microsoft-connector.tenantId") + "/oauth2/v2.0")
+      .property("AUTH.baseUri", "https://login.microsoftonline.com/" + tenantId + "/oauth2/v2.0")
       .request(MediaType.APPLICATION_JSON).get();
     assertThat(response.readEntity(String.class))
       .contains("\"uri\":\"http://localhost:8081/oauth2/callback\"")
