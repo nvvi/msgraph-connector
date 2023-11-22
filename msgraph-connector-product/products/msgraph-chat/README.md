@@ -13,6 +13,8 @@ Automate message organization and processing. This connector:
 - Enables low code citizen developers to enhance existing business processes
   with Microsoft Teams features.
 
+> **_NOTE:_**  As of version `11.2`, notifications through Microsoft Teams are part of the core product.
+
 ## Demo
 
 ![demo-mail](doc/img/teams-notification-chat.png)
