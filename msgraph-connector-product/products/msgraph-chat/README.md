@@ -13,7 +13,7 @@ Automate message organization and processing. This connector:
 - Enables low code citizen developers to enhance existing business processes
   with Microsoft Teams features.
 
-> **_NOTE:_**  As of version `11.2`, notifications through Microsoft Teams are part of the core product.
+> **_NOTE:_**  As of version `11.2`, notifications through Microsoft Teams are part of the core product. (See [Axon Ivy 11.2](https://dev.axonivy.com/news/11.2) for more info)
 
 ## Demo
 
