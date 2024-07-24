@@ -5,3 +5,6 @@ sites java.util.List<com.microsoft.graph.MicrosoftGraphSite> #field
 siteId String #field
 siteId GUID #fieldComment
 items java.util.List<com.microsoft.graph.MicrosoftGraphDriveItem> #field
+driveId String #field
+driveItemId String #field
+item com.microsoft.graph.MicrosoftGraphDriveItem #field

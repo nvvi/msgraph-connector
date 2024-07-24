@@ -10,7 +10,8 @@
       "name" : "mySites.ivp",
       "config" : {
         "callSignature" : "mySites",
-        "outLink" : "mySites.ivp"
+        "outLink" : "mySites.ivp",
+        "case" : { }
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
@@ -64,7 +65,8 @@
       "name" : "upload.ivp",
       "config" : {
         "callSignature" : "upload",
-        "outLink" : "upload.ivp"
+        "outLink" : "upload.ivp",
+        "case" : { }
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 184 }
@@ -122,7 +124,8 @@
       "name" : "recentFiles.ivp",
       "config" : {
         "callSignature" : "recentFiles",
-        "outLink" : "recentFiles.ivp"
+        "outLink" : "recentFiles.ivp",
+        "case" : { }
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 288 }
@@ -155,5 +158,36 @@
         "icon" : "res:/webContent/icons/microsoft.png"
       },
       "connect" : { "id" : "f16", "to" : "f15" }
+    }, {
+      "id" : "f17",
+      "type" : "RequestStart",
+      "name" : "overview.ivp",
+      "config" : {
+        "callSignature" : "overview",
+        "outLink" : "overview.ivp",
+        "case" : { }
+      },
+      "visual" : {
+        "at" : { "x" : 136, "y" : 648 }
+      },
+      "connect" : { "id" : "f20", "to" : "f19" }
+    }, {
+      "id" : "f18",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 584, "y" : 648 }
+      }
+    }, {
+      "id" : "f19",
+      "type" : "DialogCall",
+      "name" : "Overview",
+      "config" : {
+        "dialogId" : "msgraph.sharepoint.demo.Overview",
+        "startMethod" : "start()"
+      },
+      "visual" : {
+        "at" : { "x" : 360, "y" : 648 }
+      },
+      "connect" : { "id" : "f21", "to" : "f18" }
     } ]
 }

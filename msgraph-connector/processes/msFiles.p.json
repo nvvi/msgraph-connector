@@ -191,5 +191,308 @@
       "visual" : {
         "at" : { "x" : 472, "y" : 280 }
       }
+    }, {
+      "id" : "f17",
+      "type" : "CallSubStart",
+      "name" : "getDriveItemByDriveId(String)",
+      "config" : {
+        "callSignature" : "getDriveItemByDriveId",
+        "input" : {
+          "params" : [
+            { "name" : "driveId", "type" : "String" }
+          ],
+          "map" : {
+            "out.driveId" : "param.driveId"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "items", "type" : "java.util.List<com.microsoft.graph.MicrosoftGraphDriveItem>" }
+          ],
+          "map" : {
+            "result.items" : "in.items"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 88, "y" : 480 }
+      },
+      "connect" : { "id" : "f20", "to" : "f19" }
+    }, {
+      "id" : "f18",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 536, "y" : 480 }
+      }
+    }, {
+      "id" : "f19",
+      "type" : "RestClientCall",
+      "name" : "list drive items",
+      "config" : {
+        "path" : "/drives/{drive-id}/root/children",
+        "clientId" : "007036dc-72d1-429f-88a7-ba5d5cf5ae58",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "queryParams" : {
+          "$top" : "",
+          "$skip" : "",
+          "$search" : "",
+          "$filter" : "",
+          "$count" : "",
+          "$orderby" : "",
+          "$select" : "",
+          "$expand" : ""
+        },
+        "statusErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.items" : "result.value"
+        },
+        "templateParams" : {
+          "drive-id" : "in.driveId"
+        },
+        "resultType" : "com.microsoft.graph.MicrosoftGraphDriveItemCollectionResponse"
+      },
+      "visual" : {
+        "at" : { "x" : 328, "y" : 480 },
+        "size" : { "width" : 128, "height" : 60 }
+      },
+      "connect" : { "id" : "f21", "to" : "f18" }
+    }, {
+      "id" : "f22",
+      "type" : "CallSubStart",
+      "name" : "getDriveItemByItemId(String,String)",
+      "config" : {
+        "callSignature" : "getDriveItemByItemId",
+        "input" : {
+          "params" : [
+            { "name" : "driveId", "type" : "String" },
+            { "name" : "driveItemId", "type" : "String" }
+          ],
+          "map" : {
+            "out.driveId" : "param.driveId",
+            "out.driveItemId" : "param.driveItemId"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "items", "type" : "java.util.List<com.microsoft.graph.MicrosoftGraphDriveItem>" }
+          ],
+          "map" : {
+            "result.items" : "in.items"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 88, "y" : 656 }
+      },
+      "connect" : { "id" : "f25", "to" : "f24" }
+    }, {
+      "id" : "f23",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 536, "y" : 656 }
+      }
+    }, {
+      "id" : "f24",
+      "type" : "RestClientCall",
+      "name" : "list drive items by driveitem_id",
+      "config" : {
+        "path" : "/drives/{drive-id}/items/{driveItem-id}/children",
+        "clientId" : "007036dc-72d1-429f-88a7-ba5d5cf5ae58",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "queryParams" : {
+          "$top" : "",
+          "$skip" : "",
+          "$search" : "",
+          "$filter" : "",
+          "$count" : "",
+          "$orderby" : "",
+          "$select" : "",
+          "$expand" : ""
+        },
+        "statusErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.items" : "result.value"
+        },
+        "templateParams" : {
+          "driveItem-id" : "in.driveItemId",
+          "drive-id" : "in.driveId"
+        },
+        "resultType" : "com.microsoft.graph.MicrosoftGraphDriveItemCollectionResponse"
+      },
+      "visual" : {
+        "at" : { "x" : 328, "y" : 656 },
+        "size" : { "width" : 136, "height" : 60 }
+      },
+      "connect" : { "id" : "f26", "to" : "f23" }
+    }, {
+      "id" : "f27",
+      "type" : "CallSubStart",
+      "name" : "createFolderInItem(String,String,MicrosoftGraphDriveItem)",
+      "config" : {
+        "callSignature" : "createFolderInItem",
+        "input" : {
+          "params" : [
+            { "name" : "driveId", "type" : "String" },
+            { "name" : "driveItemId", "type" : "String" },
+            { "name" : "item", "type" : "com.microsoft.graph.MicrosoftGraphDriveItem" }
+          ],
+          "map" : {
+            "out.driveId" : "param.driveId",
+            "out.driveItemId" : "param.driveItemId",
+            "out.item" : "param.item"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 88, "y" : 824 }
+      },
+      "connect" : { "id" : "f30", "to" : "f29" }
+    }, {
+      "id" : "f28",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 536, "y" : 824 }
+      }
+    }, {
+      "id" : "f29",
+      "type" : "RestClientCall",
+      "name" : "create new folder in item",
+      "config" : {
+        "bodyRaw" : [
+          "{",
+          "  \"name\": \"<%=in.item.name%>\",",
+          "  \"folder\": { },",
+          "  \"@microsoft.graph.conflictBehavior\": \"rename\"",
+          "}"
+        ],
+        "path" : "/drives/{drive-id}/items/{driveItem-id}/children",
+        "clientId" : "007036dc-72d1-429f-88a7-ba5d5cf5ae58",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyObjectType" : "com.microsoft.graph.MicrosoftGraphDriveItem",
+        "templateParams" : {
+          "driveItem-id" : "in.driveItemId",
+          "drive-id" : "in.driveId"
+        },
+        "resultType" : "com.microsoft.graph.MicrosoftGraphDriveItem",
+        "bodyInputType" : "RAW"
+      },
+      "visual" : {
+        "at" : { "x" : 328, "y" : 823 },
+        "size" : { "width" : 130, "height" : 63 }
+      },
+      "connect" : { "id" : "f31", "to" : "f28" }
+    }, {
+      "id" : "f32",
+      "type" : "CallSubStart",
+      "name" : "deleteDriveItem(String,String)",
+      "config" : {
+        "callSignature" : "deleteDriveItem",
+        "input" : {
+          "params" : [
+            { "name" : "driveId", "type" : "String" },
+            { "name" : "driveItemId", "type" : "String" }
+          ],
+          "map" : {
+            "out.driveId" : "param.driveId",
+            "out.driveItemId" : "param.driveItemId"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 88, "y" : 992 }
+      },
+      "connect" : { "id" : "f35", "to" : "f34" }
+    }, {
+      "id" : "f33",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 536, "y" : 992 }
+      }
+    }, {
+      "id" : "f34",
+      "type" : "RestClientCall",
+      "name" : "delete drive item",
+      "config" : {
+        "path" : "/me/drives/{drive-id}/items/{driveItem-id}",
+        "clientId" : "007036dc-72d1-429f-88a7-ba5d5cf5ae58",
+        "method" : "DELETE",
+        "templateParams" : {
+          "driveItem-id" : "in.driveItemId",
+          "drive-id" : "in.driveId"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 328, "y" : 992 },
+        "size" : { "width" : 120, "height" : 60 }
+      },
+      "connect" : { "id" : "f36", "to" : "f33" }
+    }, {
+      "id" : "f37",
+      "type" : "CallSubStart",
+      "name" : "uploadFile()",
+      "config" : {
+        "callSignature" : "uploadFile"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 1184 }
+      },
+      "connect" : { "id" : "f40", "to" : "f38" }
+    }, {
+      "id" : "f38",
+      "type" : "RestClientCall",
+      "config" : {
+        "bodyRaw" : [
+          "{",
+          "  \"name\": \"<%=in.item.name%>\",",
+          "  \"folder\": { },",
+          "  \"@microsoft.graph.conflictBehavior\": \"rename\"",
+          "}"
+        ],
+        "path" : "/sites/{site-id}/drive/items/{parent-id}:/{filename}:/content",
+        "clientId" : "007036dc-72d1-429f-88a7-ba5d5cf5ae58",
+        "method" : "PUT",
+        "templateParams" : {
+          "filename" : "\"test.txt\"",
+          "site-id" : "in.siteId",
+          "parent-id" : "in.driveId"
+        },
+        "bodyInputType" : "ENTITY"
+      },
+      "visual" : {
+        "at" : { "x" : 328, "y" : 1184 }
+      },
+      "connect" : { "id" : "f41", "to" : "f39" }
+    }, {
+      "id" : "f39",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 544, "y" : 1184 }
+      }
+    }, {
+      "id" : "f42",
+      "type" : "CallSubStart",
+      "name" : "uploadFolder()",
+      "config" : {
+        "callSignature" : "uploadFolder"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 1336 }
+      },
+      "connect" : { "id" : "f46", "to" : "f43" }
+    }, {
+      "id" : "f43",
+      "type" : "RestClientCall",
+      "visual" : {
+        "at" : { "x" : 328, "y" : 1336 }
+      },
+      "connect" : { "id" : "f45", "to" : "f44" }
+    }, {
+      "id" : "f44",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 544, "y" : 1336 }
+      }
     } ]
 }
